@@ -1,0 +1,737 @@
+/*!
+Theme Name: timagazine
+Theme URI: http://demo.themetim.com/timagazine/
+Author: themetim
+Author URI: https://www.themetim.com/
+Description: TiMagazine is a Responsive HTML5 and CSS3 WordPress Theme created with Bootstrap 4 and ideal for news websites. Comes with the most popular siteorigine page builder. Fully customizable category posts with page builder widget. Drag and Drop categorized news sections within page. Unlimited color and typography choices. Customizable background, header, footer and sidebar section
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: timagazine
+Tags: blog, custom-background, custom-colors, custom-menu, translation-ready, theme-options, threaded-comments, custom-logo, footer-widgets, sticky-post, custom-header, featured-image-header, full-width-template, left-sidebar, right-sidebar
+*/
+
+/*--------------------------------------------------------------
+# Common
+--------------------------------------------------------------*/
+.container-fluid {
+	padding: 0 8%;
+}
+.boxed .layout{
+	width: 85%;
+	margin: 0 auto;
+	background: #fff;
+	box-shadow: 0 0 20px #f4f4f4;
+	-webkit-box-shadow: 0 0 20px #f4f4f4;
+	-o-box-shadow: 0 0 20px #f4f4f4;
+	overflow: hidden;
+}
+.boxed .container-fluid {
+	padding: 0 4%;
+}
+img{
+	max-width: 100%;
+	height: auto;
+}
+.position-r{
+	position: relative;
+}
+.dropdown-item:focus, .dropdown-item:hover,.dropdown-item.active, .dropdown-item:active{
+	background: transparent;
+}
+.dropdown-item {
+	padding: .65rem 1.9rem;
+}
+.dropdown-menu{
+	margin-top: 0;
+}
+.breadcrumb{
+	padding: 4rem 0;
+	background-color: #fcfcfc;
+	border-radius: 0;
+	margin: 0;
+}
+.breadcrumb h1{
+	margin-bottom: 0;
+	text-transform: capitalize;
+}
+.breadcrumb,.breadcrumb a{
+	color: #999;
+}
+.overflow-h{
+	overflow: hidden;
+}
+.mt-50{
+	margin-top: 50px;
+}
+.mt-30{
+	margin-top: 30px;
+}
+.mb-30{
+	margin-bottom: 30px;
+}
+.mt-20{
+	margin-top: 20px;
+}
+.mb-20{
+	margin-bottom: 20px;
+}
+button, html input[type=button], input[type=reset], input[type=submit] {
+	cursor: pointer;
+}
+table{
+	width: 100%;
+}
+th, td {
+	font-weight: inherit;
+	border: 1px solid #eee;
+	padding: 7px 5px;
+	text-align: center;
+}
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+/* Top Bar Header 1 */
+.top-news-feed-title{
+	color: #fff;
+	padding: 6px 5px;
+}
+.top-menu ul{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+.top-menu ul li{
+	display: inline-block;
+}
+.top-menu ul li a{
+	display: block;
+	padding: 0 7px
+}
+.top-menu ul li:last-child a{
+	padding-right: 0;
+}
+.top-bar:after{
+	content: '';
+	border: 1px solid #f4f4f4;
+	display: block;
+	width: 92%;
+	position: absolute;
+	bottom: 0;
+	left: 4%;
+}
+.wide .top-bar:after{
+	width: 84%;
+	left: 8%;
+}
+/* Header 2 */
+.header-2{
+	padding: 15px 0;
+}
+/* header 3*/
+.main-menu .dropdown-arrow-down:hover>.dropdown-menu {
+	display: block;
+}
+.main-menu .dropdown-menu>.dropdown>.dropdown-menu {
+	top: 0;
+	left: 100%;
+}
+.main-menu .navbar-expand-lg .navbar-nav .nav-link{
+	padding: .65rem 15px;
+}
+.dropdown-arrow-down > .nav-link::after {
+	display: inline-block;
+	width: 0;
+	height: 0;
+	margin-left: .255em;
+	vertical-align: .255em;
+	content: "";
+	border-top: .3em solid;
+	border-right: .3em solid transparent;
+	border-left: .3em solid transparent;
+}
+.dropdown-arrow-down > .dropdown-item::after {
+	display: inline-block;
+	width: 0;
+	height: 0;
+	margin-left: .255em;
+	vertical-align: .255em;
+	content: "";
+	border-top: .3em solid;
+	border-right: .3em solid transparent;
+	border-left: .3em solid transparent;
+}
+.search-dropdown .dropdown-menu{
+	left: auto;
+	right: 0;
+	width: 300px;
+	padding: 15px;
+	margin-top: 15px;
+}
+
+/*--------------------------------------------------------------
+# Forms
+--------------------------------------------------------------*/
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+	border: 1px solid;
+	border-color: #ccc #ccc #bbb;
+	border-radius: 3px;
+	background: #e6e6e6;
+	color: rgba(0, 0, 0, 0.8);
+	line-height: 1;
+	padding: .6rem .8rem
+}
+
+button:hover,
+input[type="button"]:hover,
+input[type="reset"]:hover,
+input[type="submit"]:hover {
+	border-color: #ccc #bbb #aaa;
+}
+
+button:active, button:focus,
+input[type="button"]:active,
+input[type="button"]:focus,
+input[type="reset"]:active,
+input[type="reset"]:focus,
+input[type="submit"]:active,
+input[type="submit"]:focus {
+	border-color: #aaa #bbb #bbb;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="tel"],
+input[type="range"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="color"],
+textarea {
+	color: #495057;
+	border: 1px solid #ccc;
+	border-radius: .25rem;
+	padding: .45rem .75rem;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+input[type="number"]:focus,
+input[type="tel"]:focus,
+input[type="range"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="week"]:focus,
+input[type="time"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="color"]:focus,
+textarea:focus {
+	color: #222627;
+}
+
+select {
+	border: 1px solid #ccc;
+}
+
+textarea {
+	width: 100%;
+}
+
+/*--------------------------------------------------------------
+## Footer
+--------------------------------------------------------------*/
+.footer-top-widget-title{
+	color: #fff;
+	margin-bottom: 35px;
+}
+.footer-top ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.footer-main li:last-child{
+	padding-bottom: 0;
+	border: 0;
+	margin-bottom: 0;
+}
+.footer-main li{
+	padding-bottom: 20px;
+}
+.footer-main .widget_recent_entries li{
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #2f383c;
+}
+.footer-main .widget_recent_entries a{
+	display: block;
+}
+.footer-main .widget_recent_entries .post-date {
+	color: #545e65;
+}
+.footer-main .tagcloud a,.widget-area .widget_tag_cloud a{
+	background: #24292e;
+	color: #545e65;
+	padding: 5px 15px;
+	display: inline-block;
+	margin: 0 7px 9px 0;
+	font-size: 14px !important;
+}
+.footer-top:after {
+	content: '';
+	width: 80%;
+	display: block;
+	margin: 0 auto;
+}
+/* Footer Middle*/
+.footer-social{
+
+}
+.footer-social a{
+	border: 1px solid;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	margin: 10px 4px 0;
+	padding: 0;
+	width: 43px;
+	height: 43px;
+	text-align: center;
+	line-height: 43px;
+	display: block;
+}
+/* Footer Bottom*/
+.footer-bottom{
+	font-size: 13px;
+}
+.footer-bottom-widget ul{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+.footer-bottom-widget ul li{
+	display: inline-block;
+	padding-left: 10px;
+}
+.footer-bottom ul li{
+	padding-bottom: 0;
+}
+/*--------------------------------------------------------------
+# Blog
+--------------------------------------------------------------*/
+/* Category BG Color */
+.cat-position{
+	position: absolute;
+	top: 5px;
+	right: 5px;
+}
+.category-bg a{
+	padding: 0 5px;
+	display: inline-block;
+	font-size: 12px;
+	margin-right: 2px;
+	line-height: 22px;
+	color: #fff;
+	margin-bottom: 10px;
+}
+.category-bg .category-unique-empty{
+	background: #222627;
+}
+/* Post Meta */
+.entry-meta > span a,.tags-links a{
+	color: #999;
+}
+.entry-meta > span:first-child{
+	padding-left: 0;
+}
+.entry-meta > span:last-child{
+	border-right: 0;
+}
+.entry-meta > span{
+	color: #989898;
+	border-right: 1px solid #e5e5e5;
+	padding: 0 10px;
+	margin-top: 5px;
+	display: inline-block;
+}
+.featured-mag-contents{
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+	z-index: 1;
+	padding: 15px;
+}
+
+.featured-mag-post-widget{
+	margin: 0 -15px;
+}
+.featured-col-6{
+	width: 50%;
+	float: left;
+	padding: 0 15px;
+	margin-top: 30px;
+}
+.featured-col-3{
+	float: left;
+	width: 25%;
+	margin-top: 30px;
+	padding: 0 15px;
+	overflow: hidden;
+	min-height: 192px;
+}
+.featured-mag-thumb a:after{
+	opacity: 0.7;
+	position: absolute;
+	content: '';
+	width: 100%;
+	height: 50%;
+	background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, #2f2f2f 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(100%, #2f2f2f));
+	background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, #2f2f2f 100%);
+	background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, #2f2f2f 100%);
+	background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 0%, #2f2f2f 100%);
+	background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #2f2f2f 100%);
+	bottom: 0;
+	left: 0;
+	z-index: 1;
+	backface-visibility: hidden;
+}
+.entry-meta {
+	font-size: 12px;
+}
+.featured-mag-contents a,.featured-mag-contents .entry-meta a,.featured-mag-contents span{
+	color: #fff;
+}
+.featured-img-contents-fix h4 a,.featured-img-contents-fix .entry-meta a{
+	color: #222627;
+}
+.featured-img-contents-fix{
+	position: relative;
+}
+.edit-link{
+	display: block;
+	margin-top: 10px;
+}
+.posts-navigation, .post-navigation {
+	text-align: center;
+	padding: 50px 0 0;
+	display: inline-block;
+	width: 100%;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+.nav-previous {
+	float: left;
+}
+.nav-next {
+	float: right;
+}
+.nav-previous a:before, .nav-next a:after {
+	content: "\f104";
+	display: inline-block;
+	font: normal normal normal 18px/1 FontAwesome;
+	margin-right: 15px;
+	position: relative;
+	top: 1px;
+}
+.nav-next a:after {
+	content: "\f105";
+	margin-right: 0;
+	margin-left: 15px;
+}
+.widget-area .widget{
+	margin-bottom: 40px;
+}
+.widget-area .widget:last-child{
+	margin-bottom: 0;
+}
+.widget-area .widget-title{
+	border-bottom: 3px solid #fcfcfc;
+	padding-bottom: 10px;
+	margin-bottom: 20px;
+}
+.widget-area .widget-title:after{
+	content: '';
+	width: 50px;
+	display: block;
+	border: 2px solid;
+	position: absolute;
+	bottom: -4px;
+}
+.widget-area ul{
+	list-style: none;
+	padding: 0;
+}
+.widget-area ul li{
+	padding: 5px 0;
+}
+.widget-area, .widget-area a{
+	color: #555;
+}
+.tags-links {
+	font-weight: bold;
+}
+.tags-links a {
+	padding-left: 5px;
+	text-transform: capitalize;
+	font-weight: normal;
+	margin-top: 5px;
+	display: inline-block;
+}
+.widget-area .widget_tag_cloud .tagcloud a{
+	background: #fcfcfc;
+}
+/*--------------------------------------------------------------
+# Single Page
+--------------------------------------------------------------*/
+.comment-form label{
+	display: block;
+}
+.comments-area,.comment-respond{
+	margin-top: 50px;
+}
+.comment-list{
+	list-style: none;
+	padding: 0;
+}
+.comment img {
+	max-width: 100%;
+	border-radius: 50%;
+	margin-right: 10px;
+}
+.comment-metadata {
+	margin-left: 75px;
+	margin-top: -19px;
+	margin-bottom: 15px;
+}
+.comment-content, .comment-metadata, .comment-awaiting-moderation {
+	margin-left: 75px;
+}
+.reply {
+	text-align: right;
+}
+.reply a{
+	display: inline-block
+}
+.comment-list .children {
+	list-style: none;
+}
+.comment-meta a{
+	color: #222627;
+}
+.comment-list li{
+	margin-top: 30px;
+}
+/*--------------------------------------------------------------
+# Widgets
+--------------------------------------------------------------*/
+.latest-posts-carousel .owl-nav{
+	position: absolute;
+	top: -32px;
+	right: 0;
+	width: 100px;
+	text-align: right;
+	text-transform: uppercase;
+}
+.latest-posts-carousel .owl-nav>div{
+	display: inline-block;
+	margin-left: 10px;
+	font-weight: 600;
+	letter-spacing: 1px;
+}
+/*--------------------------------------------------------------
+## Comments
+--------------------------------------------------------------*/
+.comment-content a {
+	word-wrap: break-word;
+}
+
+.bypostauthor {
+	display: block;
+}
+
+/*--------------------------------------------------------------
+# Accessibility
+--------------------------------------------------------------*/
+/* Text meant only for screen readers. */
+.screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute !important;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+	word-wrap: normal !important;
+	/* Many screen reader and browser combinations announce broken words as they would appear visually. */
+}
+
+.screen-reader-text:focus {
+	background-color: #f1f1f1;
+	border-radius: 3px;
+	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+	clip: auto !important;
+	color: #21759b;
+	display: block;
+	font-size: 14px;
+	font-size: 0.875rem;
+	font-weight: bold;
+	height: auto;
+	left: 5px;
+	line-height: normal;
+	padding: 15px 23px 14px;
+	text-decoration: none;
+	top: 5px;
+	width: auto;
+	z-index: 100000;
+	/* Above WP toolbar. */
+}
+
+/* Do not show the outline on the skip link target. */
+#content[tabindex="-1"]:focus {
+	outline: 0;
+}
+
+/*--------------------------------------------------------------
+# Alignments
+--------------------------------------------------------------*/
+.alignleft {
+	display: inline;
+	float: left;
+	margin-right: 1.5em;
+}
+
+.alignright {
+	display: inline;
+	float: right;
+	margin-left: 1.5em;
+}
+
+.aligncenter {
+	clear: both;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/*--------------------------------------------------------------
+# Infinite scroll
+--------------------------------------------------------------*/
+/* Globally hidden elements when Infinite Scroll is supported and in use. */
+.infinite-scroll .posts-navigation,
+.infinite-scroll.neverending .site-footer {
+	/* Theme Footer (when set to scrolling) */
+	display: none;
+}
+
+/* When Infinite Scroll has reached its end we need to re-display elements that were hidden (via .neverending) before. */
+.infinity-end.neverending .site-footer {
+	display: block;
+}
+
+/*--------------------------------------------------------------
+# Media
+--------------------------------------------------------------*/
+.page-content .wp-smiley,
+.entry-content .wp-smiley,
+.comment-content .wp-smiley {
+	border: none;
+	margin-bottom: 0;
+	margin-top: 0;
+	padding: 0;
+}
+
+/* Make sure embeds and iframes fit their containers. */
+embed,
+iframe,
+object {
+	max-width: 100%;
+}
+
+/* Make sure logo link wraps around logo image. */
+.custom-logo-link {
+	display: inline-block;
+}
+
+/*--------------------------------------------------------------
+## Captions
+--------------------------------------------------------------*/
+.wp-caption {
+	margin-bottom: 1.5em;
+	max-width: 100%;
+}
+
+.wp-caption img[class*="wp-image-"] {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.wp-caption .wp-caption-text {
+	margin: 0.8075em 0;
+}
+
+.wp-caption-text {
+	text-align: center;
+}
+
+/*--------------------------------------------------------------
+## Galleries
+--------------------------------------------------------------*/
+.gallery {
+	margin-bottom: 1.5em;
+}
+
+.gallery-item {
+	display: inline-block;
+	text-align: center;
+	vertical-align: top;
+	width: 100%;
+}
+
+.gallery-columns-2 .gallery-item {
+	max-width: 50%;
+}
+
+.gallery-columns-3 .gallery-item {
+	max-width: 33.33%;
+}
+
+.gallery-columns-4 .gallery-item {
+	max-width: 25%;
+}
+
+.gallery-columns-5 .gallery-item {
+	max-width: 20%;
+}
+
+.gallery-columns-6 .gallery-item {
+	max-width: 16.66%;
+}
+
+.gallery-columns-7 .gallery-item {
+	max-width: 14.28%;
+}
+
+.gallery-columns-8 .gallery-item {
+	max-width: 12.5%;
+}
+
+.gallery-columns-9 .gallery-item {
+	max-width: 11.11%;
+}
+
+.gallery-caption {
+	display: block;
+}
