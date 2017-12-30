@@ -68,7 +68,7 @@ if ( ! function_exists( 'timagazine_entry_footer' ) ) :
 						),
 					)
 				),
-				get_the_title()
+				esc_html( get_the_title() )
 			),
 			'<span class="edit-link">',
 			'</span>'

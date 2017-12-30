@@ -35,7 +35,7 @@
 								),
 							)
 						),
-						get_the_title()
+						esc_html( get_the_title() )
 					),
 					'<span class="edit-link">',
 					'</span>'

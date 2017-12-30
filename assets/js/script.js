@@ -2,22 +2,6 @@
     $(document).ready(function() {
         //Breaking News
         $(".breaking-news .carousel-item").first().addClass("active");
-        //Latest Post Carousel
-        $('.latest-posts-carousel').owlCarousel({
-            margin:30,
-            nav:true,
-            responsive:{
-                0:{
-                    items:1
-                },
-                600:{
-                    items:2
-                },
-                1000:{
-                    items:3
-                }
-            }
-        });
         //masonry
         if ( $(".masonry").length ){
             var $masonry = $('.masonry .masonry-wrap');
@@ -33,7 +17,45 @@
                 });
             });
         }
-
+        //Back To Top
+        if ($('#back-to-top').length) {
+            var scrollTrigger = 100, // px
+                backToTop = function () {
+                    var scrollTop = $(window).scrollTop();
+                    if (scrollTop > scrollTrigger) {
+                        $('#back-to-top').addClass('show');
+                    } else {
+                        $('#back-to-top').removeClass('show');
+                    }
+                };
+            backToTop();
+            $(window).on('scroll', function () {
+                backToTop();
+            });
+            $('#back-to-top').on('click', function (e) {
+                e.preventDefault();
+                $('html,body').animate({
+                    scrollTop: 0
+                }, 700);
+            });
+        }
     });
+    //Trending
+    $('.trending-carousel .vertical .carousel-item').each(function(){
+        var next = $(this).next();
+        if (!next.length) {
+            next = $(this).siblings(':first');
+        }
+        $('.trending-carousel').find('.carousel-item').first().addClass('active');
+        next.children(':first-child').clone().appendTo($(this));
 
+        for (var i=1;i<3;i++) {
+            next=next.next();
+            if (!next.length) {
+                next = $(this).siblings(':first');
+            }
+
+            next.children(':first-child').clone().appendTo($(this));
+        }
+    });
 })( jQuery );

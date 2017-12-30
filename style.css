@@ -1,10 +1,10 @@
 /*!
 Theme Name: timagazine
-Theme URI: http://demo.themetim.com/timagazine/
+Theme URI: https://www.themetim.com/wordpress-themes/ti-magazine/
 Author: themetim
 Author URI: https://www.themetim.com/
 Description: TiMagazine is a Responsive HTML5 and CSS3 WordPress Theme created with Bootstrap 4 and ideal for news websites. Comes with the most popular siteorigine page builder. Fully customizable category posts with page builder widget. Drag and Drop categorized news sections within page. Unlimited color and typography choices. Customizable background, header, footer and sidebar section
-Version: 1.0.0
+Version: 1.0.2
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: timagazine
@@ -14,6 +14,16 @@ Tags: blog, custom-background, custom-colors, custom-menu, translation-ready, th
 /*--------------------------------------------------------------
 # Common
 --------------------------------------------------------------*/
+body{
+	background-color: #fcfcfc;
+}
+a,.widget-social-links li a .fa{
+	-webkit-transition: all .3s ease-in-out;
+	-moz-transition: all .3s ease-in-out;
+	-ms-transition: all .3s ease-in-out;
+	-o-transition: all .3s ease-in-out;
+	transition: all .3s ease-in-out;
+}
 .container-fluid {
 	padding: 0 8%;
 }
@@ -21,9 +31,9 @@ Tags: blog, custom-background, custom-colors, custom-menu, translation-ready, th
 	width: 85%;
 	margin: 0 auto;
 	background: #fff;
-	box-shadow: 0 0 20px #f4f4f4;
-	-webkit-box-shadow: 0 0 20px #f4f4f4;
-	-o-box-shadow: 0 0 20px #f4f4f4;
+	box-shadow: 0 0 20px #eee;
+	-webkit-box-shadow: 0 0 20px #eee;
+	-o-box-shadow: 0 0 20px #eee;
 	overflow: hidden;
 }
 .boxed .container-fluid {
@@ -32,6 +42,20 @@ Tags: blog, custom-background, custom-colors, custom-menu, translation-ready, th
 img{
 	max-width: 100%;
 	height: auto;
+}
+.hover-images img {
+	-webkit-transition-duration: 900ms;
+	transition-duration: 900ms;
+	-webkit-transition-property: transform;
+	transition-property: transform;
+	-webkit-transform: translateZ(0);
+	-moz-transform: translateZ(0);
+	transform: translateZ(0);
+}
+.hover-images:hover img {
+	-webkit-transform: scale(1.05);
+	transform: scale(1.05);
+	-moz-transform: scale(1.05);
 }
 .position-r{
 	position: relative;
@@ -47,7 +71,7 @@ img{
 }
 .breadcrumb{
 	padding: 4rem 0;
-	background-color: #fcfcfc;
+	background-color: #fafafa;
 	border-radius: 0;
 	margin: 0;
 }
@@ -67,7 +91,7 @@ img{
 .mt-30{
 	margin-top: 30px;
 }
-.mb-30{
+.mb-30,.woocommerce #reviews #comments h2,.cart_totals h2{
 	margin-bottom: 30px;
 }
 .mt-20{
@@ -75,6 +99,27 @@ img{
 }
 .mb-20{
 	margin-bottom: 20px;
+}
+.widget-title{
+	margin-bottom: 0;
+}
+blockquote {
+	quotes: "" "";
+	font-size: 16px;
+	font-style: italic;
+	line-height: 1.7;
+	margin: 0 0 20px;
+	overflow: hidden;
+	padding-left: 20px;
+	border-left: 3px solid;
+}
+blockquote p{
+	margin: 0;
+}
+blockquote cite {
+	display: block;
+	font-style: normal;
+	margin-top: 0.5em;
 }
 button, html input[type=button], input[type=reset], input[type=submit] {
 	cursor: pointer;
@@ -113,7 +158,7 @@ th, td {
 }
 .top-bar:after{
 	content: '';
-	border: 1px solid #f4f4f4;
+	border: 1px solid #eee;
 	display: block;
 	width: 92%;
 	position: absolute;
@@ -126,7 +171,7 @@ th, td {
 }
 /* Header 2 */
 .header-2{
-	padding: 15px 0;
+	padding: 25px 0;
 }
 /* header 3*/
 .main-menu .dropdown-arrow-down:hover>.dropdown-menu {
@@ -172,24 +217,28 @@ th, td {
 /*--------------------------------------------------------------
 # Forms
 --------------------------------------------------------------*/
+#today{
+	background: #eee;
+}
 button,
 input[type="button"],
 input[type="reset"],
-input[type="submit"] {
-	border: 1px solid;
-	border-color: #ccc #ccc #bbb;
+input[type="submit"],.woocommerce ul.products li.product .button,.woocommerce #respond input#submit.alt, .woocommerce a.button.alt, .woocommerce button.button.alt, .woocommerce input.button.alt,.woocommerce #respond input#submit, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button,.woocommerce #respond input#submit:hover, .woocommerce a.button:hover, .woocommerce button.button:hover, .woocommerce input.button:hover ,.woocommerce #respond input#submit.alt:hover, .woocommerce a.button.alt:hover, .woocommerce button.button.alt:hover, .woocommerce input.button.alt:hover{
+	border: 1px solid #f4b738;
 	border-radius: 3px;
-	background: #e6e6e6;
-	color: rgba(0, 0, 0, 0.8);
+	background: #f4b738;
+	color: #fff;
 	line-height: 1;
-	padding: .6rem .8rem
+	padding: .6rem .8rem;
+	outline: none;
+	box-shadow: none;
 }
 
 button:hover,
 input[type="button"]:hover,
 input[type="reset"]:hover,
-input[type="submit"]:hover {
-	border-color: #ccc #bbb #aaa;
+input[type="submit"]:hover,.woocommerce #respond input#submit:hover, .woocommerce a.button:hover, .woocommerce button.button:hover, .woocommerce input.button:hover,.woocommerce #respond input#submit.alt:hover, .woocommerce a.button.alt:hover, .woocommerce button.button.alt:hover, .woocommerce input.button.alt:hover {
+	opacity: .8;
 }
 
 button:active, button:focus,
@@ -199,7 +248,8 @@ input[type="reset"]:active,
 input[type="reset"]:focus,
 input[type="submit"]:active,
 input[type="submit"]:focus {
-	border-color: #aaa #bbb #bbb;
+	opacity: .8;
+	outline: none;
 }
 
 input[type="text"],
@@ -217,13 +267,13 @@ input[type="time"],
 input[type="datetime"],
 input[type="datetime-local"],
 input[type="color"],
-textarea {
+textarea,select {
 	color: #495057;
-	border: 1px solid #ccc;
+	border: 1px solid #e5e5e5;
 	border-radius: .25rem;
 	padding: .45rem .75rem;
+	outline: none;
 }
-
 input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="url"]:focus,
@@ -242,15 +292,173 @@ input[type="color"]:focus,
 textarea:focus {
 	color: #222627;
 }
-
 select {
-	border: 1px solid #ccc;
+	border: 1px solid #e5e5e5;
 }
-
-textarea {
+textarea,.wpcf7-form > p > label {
 	width: 100%;
 }
 
+/*--------------------------------------------------------------
+## Home
+--------------------------------------------------------------*/
+.trending-slick-carousel > button{
+	position: absolute;
+	top: -10px;
+	right: -2px;
+}
+.slick-prev:before, .slick-next:before{
+	color: #f4b738;
+}
+.trending-slick-carousel  .slick-prev{
+	left: auto;
+	right: 25px;
+}
+/*--------------------------------------------------------------
+## WooCommerce
+--------------------------------------------------------------*/
+.related,.up-sells{
+	margin-top: 50px;
+}
+.related>h2,.up-sells>h2{
+	margin-bottom: 30px;
+	text-transform: capitalize;
+}
+.woocommerce ul.products li.product .price {
+	font-weight: 700;
+}
+.woocommerce ul.products li.product .price ins {
+	font-weight: 400;
+}
+.woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
+	width: 30.7%;
+	border: 1px solid #e5e5e5;
+	padding-bottom: 25px;
+	text-align: center;
+}
+.woocommerce .products .star-rating{
+	margin: 0 auto .5em;
+}
+.woocommerce .woocommerce-ordering {
+	margin: 0 0 40px;
+}
+.woocommerce span.onsale {
+	min-height: 42px;
+	min-width: 42px;
+	background-color: #222627;
+}
+.woocommerce ul.products li.product .woocommerce-loop-category__title, .woocommerce ul.products li.product .woocommerce-loop-product__title, .woocommerce ul.products li.product h3 {
+	padding: 0.5em 0 1.2em;
+	font-size: 18px;
+}
+.woocommerce ul.products li.product .price del {
+	opacity: .8;
+	display: inline-block;
+}
+.woocommerce div.product p.price del, .woocommerce div.product span.price del,.woocommerce ul.products li.product .price del{
+	margin-right: 10px;
+	text-decoration: none;
+}
+.woocommerce nav.woocommerce-pagination ul li a, .woocommerce nav.woocommerce-pagination ul li span {
+	padding: 12px 17px;
+	margin: 0 2px;
+	background-color: transparent;
+	color: #717171;
+	border: none;
+	font-weight: bold;
+}
+.woocommerce nav.woocommerce-pagination ul li a:focus, .woocommerce nav.woocommerce-pagination ul li a:hover, .woocommerce nav.woocommerce-pagination ul li span.current,.woocommerce nav.woocommerce-pagination ul li a, .woocommerce nav.woocommerce-pagination ul li span{
+	margin: 0;
+	font-weight: normal;
+}
+.woocommerce nav.woocommerce-pagination ul,.woocommerce nav.woocommerce-pagination ul li{
+	border-color: #e5e5e5;
+	color: #555;
+}
+.woocommerce nav.woocommerce-pagination ul li a:focus, .woocommerce nav.woocommerce-pagination ul li a:hover, .woocommerce nav.woocommerce-pagination ul li span.current{
+	background: #e5e5e5;
+	margin: 0;
+}
+.woocommerce .widget_price_filter .ui-slider .ui-slider-range,.woocommerce .widget_price_filter .ui-slider .ui-slider-handle{
+	background-color: #222627;
+}
+.comment-reply-title{
+	text-transform: capitalize;
+	margin: 15px 0;
+	display: block;
+}
+.woocommerce #reviews #comments h2,.comment-reply-title ,.related>h2, .up-sells>h2,.woocommerce div.product .product_title,.wc-tab>h2,.col2-set h3,.order_review_heading,.cart_totals h2{
+	font-size: 24px;
+}
+.woocommerce ul.cart_list li img, .woocommerce ul.product_list_widget li img {
+	width: 60px;
+}
+.product_list_widget .product-title{
+	margin-bottom: 5px;
+	display: block;
+}
+.woocommerce ul.cart_list li .star-rating, .woocommerce ul.product_list_widget li .star-rating ,.reviewer{
+	margin-top: 5px;
+	display: block;
+}
+.woocommerce #reviews #comments ol.commentlist li .comment-text {
+	margin: 0 0 0 90px;
+}
+.woocommerce #reviews #comments ol.commentlist li img.avatar {
+	width: 65px;
+}
+.woocommerce div.product .woocommerce-tabs ul.tabs li.active a {
+	color: inherit;
+	text-shadow: inherit;
+	border-bottom: 2px solid;
+}
+.woocommerce div.product .woocommerce-tabs ul.tabs::before, .woocommerce div.product .woocommerce-tabs ul.tabs li::after, .woocommerce div.product .woocommerce-tabs ul.tabs li::before, .woocommerce div.product .woocommerce-tabs ul.tabs li {
+	border: 0;
+	box-shadow: none;
+	margin: 0;
+	background: none;
+	border-radius: 0;
+	padding: 0;
+}
+.woocommerce div.product .woocommerce-tabs ul.tabs {
+	padding: 0;
+}
+.woocommerce div.product .woocommerce-tabs ul.tabs li a {
+	border-bottom: 2px solid transparent;
+	margin-right: 30px;
+}
+.woocommerce #content table.cart td.actions .input-text, .woocommerce table.cart td.actions .input-text, .woocommerce-page #content table.cart td.actions .input-text, .woocommerce-page table.cart td.actions .input-text {
+	width: 110px;
+}
+.woocommerce table.shop_table td {
+	padding: 14px 12px;
+}
+.woocommerce .col2-set .col-1, .woocommerce-page .col2-set .col-1 ,.woocommerce .col2-set .col-2, .woocommerce-page .col2-set .col-2{
+	max-width: 48%;
+}
+#add_payment_method #payment, .woocommerce-cart #payment, .woocommerce-checkout #payment {
+	background: #fcfcfc;
+	border-radius: 0;
+	padding: 20px;
+}
+#add_payment_method #payment div.payment_box, .woocommerce-cart #payment div.payment_box, .woocommerce-checkout #payment div.payment_box {
+	background-color: #f1f1f1;
+}
+#add_payment_method #payment div.payment_box::before, .woocommerce-cart #payment div.payment_box::before, .woocommerce-checkout #payment div.payment_box::before {
+	border: 1em solid #f1f1f1;
+	border-right-color: transparent;
+	border-left-color: transparent;
+	border-top-color: transparent;
+}
+#add_payment_method #payment ul.payment_methods, .woocommerce-cart #payment ul.payment_methods, .woocommerce-checkout #payment ul.payment_methods{
+	border-color: #e5e5e5;
+}
+.woocommerce table.shop_table td,.woocommerce table.shop_table tbody th, .woocommerce table.shop_table tfoot td, .woocommerce table.shop_table tfoot th {
+	border-top: 0;
+}
+.woocommerce a.remove {
+	display: inline-block;
+}
 /*--------------------------------------------------------------
 ## Footer
 --------------------------------------------------------------*/
@@ -271,10 +479,16 @@ textarea {
 .footer-main li{
 	padding-bottom: 20px;
 }
+.footer-main .footer-social li{
+	padding-bottom: 5px;
+}
 .footer-main .widget_recent_entries li{
 	margin-bottom: 20px;
 	padding-bottom: 20px;
 	border-bottom: 1px solid #2f383c;
+}
+.footer-main .widget_recent_entries li:last-child{
+	border-bottom: 0;
 }
 .footer-main .widget_recent_entries a{
 	display: block;
@@ -351,7 +565,7 @@ textarea {
 	background: #222627;
 }
 /* Post Meta */
-.entry-meta > span a,.tags-links a{
+.entry-meta > span a,.tags-links a,.author-role{
 	color: #999;
 }
 .entry-meta > span:first-child{
@@ -376,21 +590,29 @@ textarea {
 }
 
 .featured-mag-post-widget{
-	margin: 0 -15px;
+	margin: 30px -10px 0;
+	overflow: hidden;
+}
+.featured-col-6 a{
+	display: inline-block;
+}
+.featured-col-6 img{
+	top: 0 !important;
+	width: auto !important;
+	left: 0 !important;
 }
 .featured-col-6{
 	width: 50%;
 	float: left;
-	padding: 0 15px;
-	margin-top: 30px;
+	padding: 0 10px;
+	margin-bottom: 20px;
 }
 .featured-col-3{
 	float: left;
 	width: 25%;
-	margin-top: 30px;
-	padding: 0 15px;
+	margin-bottom: 20px;
+	padding: 0 10px;
 	overflow: hidden;
-	min-height: 192px;
 }
 .featured-mag-thumb a:after{
 	opacity: 0.7;
@@ -452,33 +674,45 @@ textarea {
 	margin-right: 0;
 	margin-left: 15px;
 }
-.widget-area .widget{
-	margin-bottom: 40px;
+.widget-area .widget,.woocommerce-tabs{
+	border: 1px solid #eee;
+	padding: 30px;
 }
 .widget-area .widget:last-child{
 	margin-bottom: 0;
 }
-.widget-area .widget-title{
-	border-bottom: 3px solid #fcfcfc;
+.widget-area .widget-title,.so-panel.widget .widget-title{
+	border-bottom: 1px solid #eee;
 	padding-bottom: 10px;
 	margin-bottom: 20px;
+	position: relative;
 }
-.widget-area .widget-title:after{
+.widget-area .widget-title:after,.so-panel.widget .widget-title:after{
 	content: '';
-	width: 50px;
-	display: block;
-	border: 2px solid;
+	width: 35px;
 	position: absolute;
-	bottom: -4px;
+	left: 0;
+	bottom: -1px;
+	height: 1px;
+	background: #f4b738;
+}
+.so-panel.widget .widget-title{
+	padding-bottom: 15px;
+	position: relative;
+	margin-bottom: 0;
+}
+.so-panel.timagazine-most-popular .widget-title,.widget-area .timagazine-most-popular .widget-title{
+	margin-bottom: 30px;
 }
 .widget-area ul{
 	list-style: none;
 	padding: 0;
+	margin: 0;
 }
 .widget-area ul li{
 	padding: 5px 0;
 }
-.widget-area, .widget-area a{
+.widget-area, .widget-area a,.so-panel.widget.woocommerce a{
 	color: #555;
 }
 .tags-links {
@@ -493,6 +727,108 @@ textarea {
 }
 .widget-area .widget_tag_cloud .tagcloud a{
 	background: #fcfcfc;
+}
+.widget-cat-link{
+	letter-spacing: 1px;
+	color: #333;
+	font-weight: 600;
+	border-bottom: 2px solid #f4b738;
+	padding: 0 0 14px;
+}
+.widget-social-links li{
+	display: block;
+}
+.widget-social-links li:not(:last-child) {
+	margin-right: 0;
+}
+.widget-social-links li a{
+	background: #000;
+	margin-bottom: 10px;
+	display: block;
+	color: #fff;
+	text-decoration: none;
+}
+.widget-social-links li:last-child a{
+	margin-bottom: 0;
+}
+.widget-social-links li a .fa {
+	height: 50px;
+	width: 50px;
+	margin: 0;
+	padding: 0;
+	display: block;
+	line-height: 50px;
+	text-align: center;
+}
+.widget-social-links li a:hover .fa{
+	width: 100%;
+}
+.widget-social-links li .fb .fa {
+	background: #3b5998;
+}
+.widget-social-links li .fb {
+	background: rgba(59, 89, 152, 0.92);
+}
+.widget-social-links li .tw .fa {
+	background: #1da1f2;
+}
+.widget-social-links li .tw {
+	background: rgba(29, 161, 242, .92);;
+}
+.widget-social-links li .li .fa {
+	background: #0077b5;
+}
+.widget-social-links li .li {
+	background: rgba(0, 119, 181, .92);
+}
+.widget-social-links li .pi .fa {
+	background: #bd081c;
+}
+.widget-social-links li .pi {
+	background: rgba(189, 8, 28, .92);
+}
+.widget-social-links li .in .fa{
+	background: #405de6;
+}
+.widget-social-links li .in {
+	background: rgba(64, 93, 230, .92);
+}
+.widget-social-links li .dr .fa {
+	background: #444444;
+}
+.widget-social-links li .dr {
+	background: rgba(68, 68, 68, .92);
+}
+.widget-social-links li .gp .fa {
+	background: #dd4b39;
+}
+.widget-social-links li .gp {
+	background: rgba(221, 75, 57, .80);
+}
+.widget-social-links li .yo .fa {
+	background: #ff0000;
+}
+.widget-social-links li .yo {
+	background: rgba(255, 0, 0, .80);
+}
+.widget-newsletter .widget-title{
+	font-size: 24px;
+}
+.author-contents{
+	padding: 20px 30px 50px;
+}
+.author-contents > a{
+	border-bottom: 2px solid;
+	padding-bottom: 2px;
+	text-decoration: none;
+}
+.author-role,.author-contents > a{
+	letter-spacing: 1px;
+	font-weight: 600;
+	font-size: 12px;
+}
+.search-form label,.search-form input[type="search"]{
+	width: 100%;
 }
 /*--------------------------------------------------------------
 # Single Page
@@ -538,6 +874,31 @@ textarea {
 /*--------------------------------------------------------------
 # Widgets
 --------------------------------------------------------------*/
+.widget-area .timagazine-most-popular .col-md-4{
+	padding-right: 0;
+}
+.most-popular-post-lists .row:last-child .border-hide{
+	display: none;
+}
+.widget-area .timagazine-widget-featured-posts .entry-meta > span{
+	padding: 0 5px;
+}
+.widget-area .timagazine-widget-featured-posts>.featured-mag-post-widget>div,.footer-main .timagazine-widget-featured-posts>.featured-mag-post-widget>div{
+	width: 100%;
+}
+.widget-area .timagazine-widget-category-posts-a .featured-mag-wrapper>div,
+.widget-area .timagazine-widget-category-posts-a .col-xl-6, .footer-main .timagazine-widget-category-posts-a .featured-mag-wrapper>div, .footer-main .timagazine-widget-category-posts-a .col-xl-6, .widget-area .timagazine-widget-trending-posts .col-md-6, .footer-main .timagazine-widget-trending-posts .col-md-6{
+	flex: 0 0 100%;
+	max-width: 100%;
+}
+.widget-area .timagazine-widget-featured-posts>.featured-mag-post-widget .featured-col-6 a,.footer-main .timagazine-widget-featured-posts>.featured-mag-post-widget .featured-col-6 a{
+	width: auto !important;
+	height: auto !important;
+}
+.widget-area .timagazine-widget-featured-posts>.featured-mag-post-widget .featured-col-6 img,.footer-main .timagazine-widget-featured-posts>.featured-mag-post-widget .featured-col-6 img{
+	position: relative !important;
+	height: auto !important;
+}
 .latest-posts-carousel .owl-nav{
 	position: absolute;
 	top: -32px;
@@ -552,6 +913,31 @@ textarea {
 	font-weight: 600;
 	letter-spacing: 1px;
 }
+.so-panel.widget ul{
+	list-style: none;
+}
+.so-panel.widget ul li{
+	padding: 0 0 10px;
+}
+.so-panel.widget ul li ul{
+	padding-top: 10px;
+}
+.so-panel.widget .widget-author .widget-title, .so-panel.widget .widget-newsletter .widget-title{
+	border-bottom: 0;
+	padding: 0;
+}
+.so-panel.widget .widget-author .widget-title:after ,.so-panel.widget .widget-newsletter .widget-title:after ,.widget-area .timagazine-widget-newsletter .widget-title:after, .footer-main .timagazine-widget-newsletter .widget-title:after,.widget-area .timagazine-widget-author .widget-title:after,.footer-main .timagazine-widget-author .widget-title:after{
+	display: none;
+}
+.widget-area .author-contents{
+	padding: 20px 0 10px;
+}
+.so-panel.woocommerce ul{
+	margin-top: 20px;
+}
+.widget-area .timagazine-widget-trending-posts .widget-title{
+	margin-bottom: 0;
+}
 /*--------------------------------------------------------------
 ## Comments
 --------------------------------------------------------------*/
@@ -562,7 +948,6 @@ textarea {
 .bypostauthor {
 	display: block;
 }
-
 /*--------------------------------------------------------------
 # Accessibility
 --------------------------------------------------------------*/
@@ -734,4 +1119,29 @@ object {
 
 .gallery-caption {
 	display: block;
+}
+
+#back-to-top {
+	position: fixed;
+	bottom: 30px;
+	right: 30px;
+	z-index: 9999;
+	width: 32px;
+	height: 32px;
+	text-align: center;
+	line-height: 32px;
+	cursor: pointer;
+	border-radius: 2px;
+	text-decoration: none;
+	opacity: 0;
+	font-size: 14px;
+	color: #fff;
+	background: #f4b738;
+}
+#back-to-top:hover {
+	background: #e9ebec;
+	color: #000;
+}
+#back-to-top.show {
+	opacity: 1;
 }

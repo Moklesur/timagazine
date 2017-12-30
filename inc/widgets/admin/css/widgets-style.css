@@ -1,0 +1,119 @@
+a,h4,.panel-title{
+  -webkit-transition: all .3s ease-in-out;
+  -moz-transition: all .3s ease-in-out;
+  -ms-transition: all .3s ease-in-out;
+  -o-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+}
+
+.timagazine-wrap{
+
+}
+.timagazine-accordion{
+
+}
+.row,.accordion-wrap{
+  margin: 0 -15px;
+  overflow: hidden;
+}
+small,h2>label{
+  font-weight: normal;
+}
+h2>label{
+  margin-bottom: 10px;
+  display: block;
+}
+h5{
+  font-size: 1.1em;
+}
+input[type=number].tiny-text {
+  width: 60px;
+}
+h5 small{
+  font-size: .9em;
+}
+.full-width{
+  width: 100%;
+  overflow: hidden;
+}
+.col-3{
+  width: 33.333%;
+  float: left;
+  margin-bottom: 10px;
+  padding: 0 15px;
+}
+.accordion-fix{
+  margin-top: 50px;
+}
+.accordion-fix .panel-title{
+  font-size: 1.3em;
+}
+.accordion-fix .panel h4 {
+  font-size: 1.2em;
+  margin: 1.33em 0;
+}
+.accordion-fix .panel-title{
+  display: block;
+  cursor: pointer;
+  position: relative;
+  padding: 15px;
+  background: #fafafa;
+  border: 1px solid #eee;
+  margin: 0 0 20px;
+  outline: none;
+}
+.accordion-fix .panel-title.active,.accordion-fix  .panel-title:hover {
+  background: #f4b738;
+  border-color: #f4b738;
+  color: #fff;
+}
+.content {
+  display: none;
+  padding: 1em 2.2em 2.7em;
+  border-top: 0;
+  overflow: auto;
+}
+.panel {
+  background: #ffffff;
+  color: #333333;
+}
+.ui-helper-reset {
+  padding: 0;
+  border: 0;
+  outline: 0;
+  line-height: 1.3;
+  text-decoration: none;
+  font-size: 100%;
+  list-style: none;
+}
+.chosen-container{
+  margin-top: 15px;
+}
+.widget-inside .content{
+  display: block;
+}
+.widget-inside .col-3{
+  width: 100%;
+}
+.widget-inside h5{
+  margin: 0 0 15px;
+}
+.widget-inside .accordion-fix .panel-title {
+  background: #f4b738;
+  border-color: #f4b738;
+  color: #fff;
+}
+.widget-inside .accordion-contents{
+  margin-bottom: 20px;
+}
+.accordion-contents{
+  padding: 0 15px;
+}
+@media(max-width:767px){
+  .col-3{
+    width: 100%;
+  }
+}
+#accordion-section-timagazine_magazine_view_pro{
+
+}

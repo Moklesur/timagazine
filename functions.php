@@ -16,13 +16,6 @@ if ( ! function_exists( 'timagazine_setup' ) ) :
 	 * as indicating support for post thumbnails.
 	 */
 	function timagazine_setup() {
-		/*
-		 * Make theme available for translation.
-		 * Translations can be filed in the /languages/ directory.
-		 * If you're building a theme based on timagazine, use a find and replace
-		 * to change 'timagazine' to the name of your theme in all the template files.
-		 */
-		load_theme_textdomain( 'timagazine', get_template_directory() . '/languages' );
 
 		// Add default posts and comments RSS feed links to head.
 		add_theme_support( 'automatic-feed-links' );
@@ -41,6 +34,15 @@ if ( ! function_exists( 'timagazine_setup' ) ) :
 		 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 		 */
 		add_theme_support( 'post-thumbnails' );
+		/*
+         * Define custom image size
+         */
+
+		add_image_size( 'timagazine-team-thumb', 960, 444  );
+		add_image_size( 'timagazine-medium-thumb', 295, 191, true );
+		add_image_size( 'timagazine-featured-medium-thumb', 1100, 710, true );
+		add_image_size( 'timagazine-featured-small-thumb', 570, 395, true );
+		add_image_size( 'timagazine-most-popular-thumb', 100, 70, true );
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
@@ -62,7 +64,7 @@ if ( ! function_exists( 'timagazine_setup' ) ) :
 
 		// Set up the WordPress core custom background feature.
 		add_theme_support( 'custom-background', apply_filters( 'timagazine_custom_background_args', array(
-			'default-color' => 'fff',
+			'default-color' => 'fcfcfc',
 			'default-image' => '',
 		) ) );
 
@@ -106,11 +108,23 @@ function timagazine_widgets_init() {
 		'name'          => esc_html__( 'Sidebar', 'timagazine' ),
 		'id'            => 'sidebar-1',
 		'description'   => esc_html__( 'Add widgets here.', 'timagazine' ),
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'before_widget' => '<div id="%1$s" class="widget mb-30 %2$s">',
 		'after_widget'  => '</div>',
 		'before_title'  => '<h6 class="widget-title text-uppercase position-r"><span>',
 		'after_title'   => '</span></h6>',
 	) );
+
+	if ( class_exists( 'WooCommerce' ) ) {
+		register_sidebar( array(
+			'name'          => __( 'WooCommerce', 'timagazine' ),
+			'id'            => 'woocommerce-sidebar',
+			'description'   => esc_html__( 'Add widgets here to appear in your WooCommerce sidebar.', 'timagazine' ),
+			'before_widget' => '<div id="%1$s" class="widget mb-30 %2$s">',
+			'after_widget'  => '</div>',
+			'before_title'  => '<h6 class="widget-title text-uppercase position-r"><span>',
+			'after_title'   => '</span></h6>',
+		) );
+	}
 
 	register_sidebar( array(
 		'name'          => esc_html__( 'Footer Bottom', 'timagazine' ),
@@ -138,6 +152,12 @@ function timagazine_widgets_init() {
 	register_widget( 'Timagazine_Widget_Featured_Posts' );
 	register_widget( 'Timagazine_Widget_Category_Posts_A' );
 	register_widget( 'Timagazine_Widget_latest_Posts' );
+	register_widget( 'Timagazine_Widget_Trending_Posts' );
+	register_widget( 'Timagazine_Widget_Social_Links' );
+	register_widget( 'Timagazine_Newsletter' );
+	register_widget( 'Timagazine_Widget_Author' );
+	register_widget( 'Timagazine_Widget_Ads' );
+	register_widget( 'Timagazine_Most_Popular' );
 }
 add_action( 'widgets_init', 'timagazine_widgets_init' );
 
@@ -146,16 +166,19 @@ add_action( 'widgets_init', 'timagazine_widgets_init' );
  */
 function timagazine_scripts() {
 	if ( get_theme_mod('body_font_name') ) {
-		wp_enqueue_style( 'timagazine-body-fonts', '//fonts.googleapis.com/css?family=' . esc_attr( get_theme_mod( 'body_font_name' ) ) );
+		wp_enqueue_style( 'timagazine-body-fonts', '//fonts.googleapis.com/css?family=' . esc_url( get_theme_mod( 'body_font_name' ) ) );
 	} else {
 		wp_enqueue_style( 'timagazine-body-fonts', '//fonts.googleapis.com/css?family=Poppins:400');
 	}
 	if ( get_theme_mod('heading_font_name') ) {
-		wp_enqueue_style( 'timagazine-heading-fonts', '//fonts.googleapis.com/css?family=' . esc_attr( get_theme_mod( 'heading_font_name' ) ) );
+		wp_enqueue_style( 'timagazine-heading-fonts', '//fonts.googleapis.com/css?family=' . esc_url( get_theme_mod( 'heading_font_name' ) ) );
 	} else {
 		wp_enqueue_style( 'timagazine-heading-fonts', '//fonts.googleapis.com/css?family=Poppins:600');
 	}
+	wp_enqueue_style( 'animate', get_template_directory_uri() . '/assets/css/animate.min.css', array(), '3.5.2' );
 	wp_enqueue_style( 'owl-carousel', get_template_directory_uri() . '/assets/css/owl.carousel.min.css', array(), '2.2.1' );
+	wp_enqueue_style( 'slick', get_template_directory_uri() . '/assets/css/slick.css', array(), '1.8.0' );
+	wp_enqueue_style( 'slick-theme', get_template_directory_uri() . '/assets/css/slick-theme.css', array(), '1.8.0' );
 	wp_enqueue_style( 'FontAwesome', get_template_directory_uri() . '/assets/css/font-awesome.min.css', array(), '4.7.0' );
 	wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.min.css', array(), '4.0.0' );
 	wp_enqueue_style( 'timagazine-style', get_stylesheet_uri() );
@@ -163,6 +186,8 @@ function timagazine_scripts() {
 
 	wp_enqueue_script( 'owl-carousel', get_template_directory_uri() . '/assets/js/owl.carousel.min.js', array('jquery'), '2.2.1', true );
 	wp_enqueue_script( 'popper', get_template_directory_uri() . '/assets/js/popper.min.js', array('jquery'), '1.12.5', true );
+	wp_enqueue_script( 'slick', get_template_directory_uri() . '/assets/js/slick.min.js', array('jquery'), '1.8.0', false );
+	wp_enqueue_script( 'fakecrop', get_template_directory_uri() . '/assets/js/jquery.fakecrop.js', array('jquery'), '1.0', true );
 	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/assets/js/bootstrap.min.js', array('jquery'), '4.0.0', true );
 
 	wp_enqueue_script( 'timagazine-navigation', get_template_directory_uri() . '/assets/js/navigation.js', array('jquery'), '20151215', true );
@@ -176,10 +201,8 @@ function timagazine_scripts() {
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
-
 }
 add_action( 'wp_enqueue_scripts', 'timagazine_scripts' );
-
 
 /**
  * Widgets
@@ -187,6 +210,12 @@ add_action( 'wp_enqueue_scripts', 'timagazine_scripts' );
 require get_template_directory() . '/inc/widgets/widget-category-posts-a.php';
 require get_template_directory() . '/inc/widgets/widget-featured-posts.php';
 require get_template_directory() . '/inc/widgets/widget-lastest-posts.php';
+require get_template_directory() . '/inc/widgets/widget-trending-posts.php';
+require get_template_directory() . '/inc/widgets/widget-social-links.php';
+require get_template_directory() . '/inc/widgets/widget-newsletter.php';
+require get_template_directory() . '/inc/widgets/widget-author.php';
+require get_template_directory() . '/inc/widgets/widget-ads.php';
+require get_template_directory() . '/inc/widgets/widget-most-popular.php';
 
 /**
  * Implement the Custom Header feature.
@@ -226,7 +255,19 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 }
 
 /**
- * Boka the excerpt length
+ * woocommerce support
+ */
+add_action( 'after_setup_theme', 'timagazine_woocommerce_support' );
+function timagazine_woocommerce_support() {
+	add_theme_support( 'woocommerce' );
+}
+/**
+ * woocommerce Hook
+ */
+require get_template_directory() . '/inc/woocommerce.php';
+
+/**
+ * the excerpt length
  */
 function timagazine_excerpt_length( $excerpt_length ) {
 	$excerpt = get_theme_mod('excerpt_lenght', '45');
@@ -266,7 +307,25 @@ function timagazine_active_plugins() {
 			'name'      => 'Page Builder by SiteOrigin',
 			'slug'      => 'siteorigin-panels',
 			'required'  => false,
+		),
+		array(
+			'name'      => 'WooCommerce',
+			'slug'      => 'woocommerce',
+			'required'  => false,
 		)
 	);
 	tgmpa( $plugins );
 }
+
+/**
+ * Scripts and styles for the Page Builder plugin
+ */
+function timagazine_load_pagebuilder_scripts() {
+	wp_enqueue_script( 'timagazine-chosen', get_template_directory_uri() . '/inc/widgets/admin/js/chosen.jquery.min.js', array('jquery', 'jquery-ui-sortable'), '1.6.2', true );
+	wp_enqueue_script( 'timagazine-chosen-init', get_template_directory_uri() . '/inc/widgets/admin/js/chosen-init.js', array( 'jquery' ), '1.0.0', true );
+
+	wp_enqueue_style( 'timagazine-chosen-styles', get_template_directory_uri() . '/inc/widgets/admin/css/chosen.min.css', '1.6.2', false );
+
+	wp_enqueue_style( 'timagazine-widgets-style', get_template_directory_uri() . '/inc/widgets/admin/css/widgets-style.css', '1.0.0', false );
+}
+add_action( 'admin_enqueue_scripts', 'timagazine_load_pagebuilder_scripts' );

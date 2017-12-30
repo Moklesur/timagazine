@@ -16,7 +16,9 @@ function timagazine_typography_color($color) {
     $body_font_size = get_theme_mod( 'body_font_size', '14' );
     $body_font_weight = get_theme_mod( 'body_font_weight', '400' );
 
-    $color .= "body { color:" . esc_attr($body_text_color) . "; font-weight:" . esc_attr($body_font_weight) ."; font-size: " . esc_attr($body_font_size) . "px;} ";
+    $color .= "body { font-weight:" . esc_attr($body_font_weight) .";} ";
+    $color .= "body,.woocommerce ul.products li.product .price { font-size: " . esc_attr($body_font_size) . "px; } ";
+    $color .= "body,.woocommerce ul.products li.product .price,.woocommerce div.product p.price, .woocommerce div.product span.price { color:" . esc_attr( $body_text_color ) . "; } ";
 
     /**
      * Font Family
@@ -24,14 +26,14 @@ function timagazine_typography_color($color) {
     //body font family
     $body_font_family = get_theme_mod('body_font_family');
     if ( $body_font_family !='' ) {
-        $color .= "body{ font-family:" . $body_font_family . ";}";
+        $color .= "body{ font-family:" . esc_attr( $body_font_family ) . ";}";
     }else{
         $color .= "body{ font-family: 'Poppins', sans-serif;}";
     }
     //heading font family
     $heading_font_family = get_theme_mod('heading_font_family');
     if ( $heading_font_family !='' ) {
-        $color .= "h1,h2,h3,h4,h5,h6{ font-family:" . $heading_font_family . ";}";
+        $color .= "h1,h2,h3,h4,h5,h6{ font-family:" . esc_attr( $heading_font_family ) . ";}";
     }else{
         $color .= "h1,h2,h3,h4,h5,h6{ font-family: 'Poppins', sans-serif;}";
     }
@@ -41,7 +43,7 @@ function timagazine_typography_color($color) {
      */
     $heading_color = get_theme_mod( 'heading_color', '#333' );
     $heading_font_weight = get_theme_mod( 'heading_font_weight', '600' );
-    $color .= "h1, h2, h3, h4, h5, h6,h1 a, h2 a, h3 a, h4 a, h5 a, h6 a,.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6{ color:" . esc_attr($heading_color) . "; font-weight:" . esc_attr($heading_font_weight) .";} ";
+    $color .= "h1, h2, h3, h4, h5, h6,h1 a, h2 a, h3 a, h4 a, h5 a, h6 a,.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6{ color:" . esc_attr( $heading_color ) . "; font-weight:" . esc_attr( $heading_font_weight ) .";} ";
 
     /**
      * Link
@@ -51,7 +53,7 @@ function timagazine_typography_color($color) {
     }
 
     $link_hover_color = get_theme_mod( 'link_hover_color', '#204056' );
-    $color .= "a:hover,a:focus { color:" . esc_attr($link_hover_color) . "} ";
+    $color .= "a:hover,a:focus { color:" . esc_attr( $link_hover_color ) . "} ";
 
     /**
      * Header Tob Bar Header-1
@@ -92,12 +94,12 @@ function timagazine_typography_color($color) {
 
     //Header Padding Top
     if ( get_theme_mod( 'header_top_padding' ) ){
-        $header_top_padding = 'padding-top: '.get_theme_mod( 'header_top_padding' ).'px;';
+        $header_top_padding = 'padding-top: '. intval( get_theme_mod( 'header_top_padding' ) ) .'px;';
         $color .= ".site-header {  $header_top_padding  } ";
     }
     //Header Padding Bottom
     if ( get_theme_mod( 'header_bottom_padding' ) ){
-        $header_bottom_padding = 'padding-bottom: '.get_theme_mod( 'header_bottom_padding' ).'px;';
+        $header_bottom_padding = 'padding-bottom: '. intval( get_theme_mod( 'header_bottom_padding' ) ) .'px;';
         $color .= ".site-header {  $header_bottom_padding  } ";
     }
     //Header Border Bottom
@@ -128,7 +130,6 @@ function timagazine_typography_color($color) {
     $color .= ".nav-link, .dropdown-item{ color:" . esc_attr( $menu_color ) . ";} ";
     //Header Font Weight
     $color .= ".main-menu .navbar-nav .nav-link,.main-menu .navbar-nav .dropdown-item{ font-weight:" . intval( $menu_font_weight ) . ";} ";
-
 
     /**
     * Footer General Settings
@@ -206,8 +207,9 @@ function timagazine_typography_color($color) {
     }
     //Footer Middle Text Color
     $color .= ".footer-social a { color:" . esc_attr( $footer_middle_text_color ) . "; } ";
-    //Footer Middle Border Style
+    //Footer Middle Border and BG color
     $color .= ".footer-social a { border-color:" . esc_attr( $footer_middle_border_color ) . "; } ";
+    $color .= ".footer-social a:hover { background:" . esc_attr( $footer_middle_border_color ) . "; } ";
     /**
      * Footer Bottom
      */
@@ -231,9 +233,7 @@ function timagazine_typography_color($color) {
     /**
      * Category BG Color
      */
-
     if( ! function_exists( 'timagazine_colored_category' ) ) :
-
         function timagazine_colored_category(){
             $output = '';
             // Hide category for pages.
@@ -242,38 +242,32 @@ function timagazine_typography_color($color) {
                 if ( $categories_list ) {
                     $output .= '<div class="category-bg">';
                     foreach( $categories_list as $category ){
-
                         $cat_bg_color = get_theme_mod( 'category_color_' . $category->term_id );
-
                         if ( $cat_bg_color ) {
                             $output .= '<a class="category-unique-bg" href="' . esc_url( get_category_link( $category->term_id ) ) . '" style="background:' . esc_attr( $cat_bg_color ) . '" rel="category tag">'. esc_html( $category->cat_name ) .'</a>';
-
                         } else {
-
                             $output .= '<a class="category-unique-bg-empty" href="' . esc_url( get_category_link( $category->term_id ) ) . '"  rel="category tag">' . esc_html( $category->cat_name ) . '</a>';
-
                         }
                     }
-
                     $output .= '</div>';
                     echo $output;
                 }
             }
-
         }
-
     endif;
 
     /**
      * Primary Color
      */
     $primary_color = get_theme_mod( 'primary_color' );
-    //Primary Color
-    $color .= "a, .current-menu-item a, .main-menu a:hover, .dropdown-item:focus, .dropdown-item:hover, .dropdown-item.active, .dropdown-item:active, .footer-main .tagcloud a:hover,.current-date{ color: " . esc_attr( $primary_color ) . "; } ";
-    //Primary BG Color
-    $color .= ".footer-main,.top-news-feed-title,.category-bg .category-unique-empty,button, input[type=\"button\"], input[type=\"reset\"], input[type=\"submit\"]{ background-color:" . esc_attr( $primary_color ) . "; } ";
-    //Primary Border Color
-    $color .= ".widget-area .widget-title:after,button, input[type=\"button\"], input[type=\"reset\"], input[type=\"submit\"]{ border-color: " . esc_attr( $primary_color ) . "; } ";
+    if ( $primary_color != '' ){
+        //Primary Color
+        $color .= "a, .current-menu-item a, .main-menu a:hover, .dropdown-item:focus, .dropdown-item:hover, .dropdown-item.active, .dropdown-item:active, .footer-main .tagcloud a:hover,.current-date{ color: " . esc_attr( $primary_color ) . "; } ";
+        //Primary BG Color
+        $color .= ".woocommerce .widget_price_filter .price_slider_wrapper .ui-widget-content,.woocommerce #respond input#submit:hover, .woocommerce a.button:hover, .woocommerce button.button:hover, .woocommerce input.button:hover,.woocommerce #respond input#submit, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button,.woocommerce #respond input#submit.alt, .woocommerce a.button.alt, .woocommerce button.button.alt, .woocommerce input.button.alt,.woocommerce ul.products li.product .button,.woocommerce span.onsale,#back-to-top,.footer-main,.top-news-feed-title,.category-bg .category-unique-empty,button, input[type=\"button\"], input[type=\"reset\"], input[type=\"submit\"],#back-to-top ,.widget-area .widget-title:after,.so-panel.widget .widget-title:after{ background-color:" . esc_attr( $primary_color ) . "; } ";
+        //Primary Border Color
+        $color .= ".woocommerce #respond input#submit, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button,.woocommerce ul.products li.product .button,.btn, .widget-area .widget-title:after,button, input[type=\"button\"], input[type=\"reset\"], input[type=\"submit\"]{ border-color: " . esc_attr( $primary_color ) . "; } ";
+    }
 
     /**
      * Typography & Color Inline

@@ -8,11 +8,11 @@
  */
 
 if ( get_theme_mod( 'blog_layout', 'default' ) == 'default' ) {
-	$margin[] = 'col-lg-6 ';
+	$margin[] = 'col-lg-6 hover-images';
 } elseif ( get_theme_mod( 'blog_layout', 'masonry' ) == 'masonry' ) {
-	$margin[] = 'col-lg-4';
+	$margin[] = 'col-lg-4 hover-images';
 } else{
-	$margin[] = 'col-lg-12';
+	$margin[] = 'col-lg-12 hover-images';
 }
 
 $margin[] = 'mb-30 hentry col-12';
@@ -22,7 +22,7 @@ $margin[] = 'mb-30 hentry col-12';
 	<div class="article-wrap overflow-h">
 		<header class="entry-header">
 			<?php if ( has_post_thumbnail() && get_theme_mod('featured_image_index_enable') != 1 ) : ?>
-				<div class="entry-thumb mb-20 position-r">
+				<div class="entry-thumb mb-20 position-r overflow-h">
 					<a href="<?php the_permalink(); ?>">
 						<img src="<?php echo get_the_post_thumbnail_url(); ?>" class="img-responsive" />
 					</a>

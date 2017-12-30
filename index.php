@@ -36,7 +36,7 @@ if ( get_theme_mod( 'blog_layout', 'default' ) == 'default' ) {
 	<main id="main" class="site-main">
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-xl-<?php echo $col; ?> col-lg-<?php echo $col . $mt_50; ?> col-md-12 col-12 mt-50 <?php echo $blog_layout; ?>">
+				<div class="col-xl-<?php echo $col; ?> col-lg-<?php echo $col . $mt_50; ?> col-md-12 col-12 mt-50 <?php echo esc_attr( $blog_layout ); ?>">
 					<div class="masonry-wrap<?php echo $row; ?>">
 						<?php
 						if ( have_posts() ) :

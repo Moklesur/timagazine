@@ -13,10 +13,10 @@
 	<div class="article-wrap overflow-h">
 		<header class="entry-header">
 			<?php if ( has_post_thumbnail() && get_theme_mod('featured_image_single_enable') != 1 ) : ?>
-				<div class="entry-thumb mb-20 position-r">
-					<a href="<?php the_permalink(); ?>">
+				<div class="entry-thumb mb-20 position-r overflow-h">
+					<div class="hover-images">
 						<img src="<?php echo get_the_post_thumbnail_url(); ?>" class="img-responsive" />
-					</a>
+					</div>
 				</div>
 			<?php endif;
 			if ( !is_singular() ) :

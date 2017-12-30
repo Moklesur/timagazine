@@ -14,7 +14,7 @@ if ( ! is_front_page() ){
 
     <main class="left-sidebar-page">
         <section>
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-9 col-md-9<?php echo $mt_50; ?>">
                         <?php

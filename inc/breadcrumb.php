@@ -4,8 +4,6 @@
  * Breadcrumbs
  * https://www.thewebtaylor.com/articles/wordpress-creating-breadcrumbs-without-a-plugin
  */
-
-
 function timagazine_breadcrumbs( $args = array() ) {
 
     if ( is_front_page() ) {
@@ -20,7 +18,7 @@ function timagazine_breadcrumbs( $args = array() ) {
         'home_title'          => esc_html__( 'Home', 'timagazine' )
     );
     $args      = apply_filters( 'timagazine_breadcrumbs_args', wp_parse_args( $args, $defaults ) );
-    $separator = '<span class="pl-2 pr-2">' . $args['separator_icon'] . '</span>';
+    $separator = '<span class="pl-2 pr-2">' . esc_html( $args['separator_icon'] ) . '</span>';
 
     /***** Begin Markup *****/
 
@@ -86,23 +84,23 @@ function timagazine_breadcrumbs( $args = array() ) {
             $html .= '<span class="item-parent item-parent-' . esc_attr( $parent_category->slug ) . '"><a class="bread-parent bread-parent-' . esc_attr( $parent_category->slug ) . '" href="' . esc_url( $category_link ) . '" title="' . esc_attr( $parent_category->name ) . '">' . esc_html( $parent_category->name ) . '</a></span>';
             $html .= $separator;
         }
-        $html .= '<span class="item-current item-cat"><span class="bread-current bread-cat" title="' . esc_attr($post->ID) . '">' . single_cat_title( '', false ) . '</span></span>';
-        $html .= '<h1>' . single_cat_title( '', false ) . '</h1>';
+        $html .= '<span class="item-current item-cat"><span class="bread-current bread-cat" title="' . esc_attr($post->ID) . '">' . esc_html( single_cat_title( '', false ) ) . '</span></span>';
+        $html .= '<h1>' . esc_html( single_cat_title( '', false ) ) . '</h1>';
     } elseif ( is_tag() ) {
-        $html .= '<span class="item-current item-tag"><span class="bread-current bread-tag">' . single_tag_title( '', false ) . '</span></span>';
-        $html .= '<h1>' . single_tag_title( '', false ) . '</h1>';
+        $html .= '<span class="item-current item-tag"><span class="bread-current bread-tag">' . esc_html( single_tag_title( '', false ) ) . '</span></span>';
+        $html .= '<h1>' . esc_html( single_tag_title( '', false ) ) . '</h1>';
     } elseif ( is_author() ) {
-        $html .= '<span class="item-current item-author"><span class="bread-current bread-author">' . get_queried_object()->display_name . '</span></span>';
-        $html .= '<h1>' . get_queried_object()->display_name . '</h1>';
+        $html .= '<span class="item-current item-author"><span class="bread-current bread-author">' . esc_html( get_queried_object()->display_name ) . '</span></span>';
+        $html .= '<h1>' . esc_html( get_queried_object()->display_name ) . '</h1>';
     } elseif ( is_day() ) {
-        $html .= '<span class="item-current item-day"><span class="bread-current bread-day">' . get_the_date() . '</span></span>';
-        $html .= '<h1>' . get_the_date() . '</h1>';
+        $html .= '<span class="item-current item-day"><span class="bread-current bread-day">' . esc_html( get_the_date() ) . '</span></span>';
+        $html .= '<h1>' . esc_html( get_the_date() ) . '</h1>';
     } elseif ( is_month() ) {
-        $html .= '<span class="item-current item-month"><span class="bread-current bread-month">' . get_the_date( 'F Y' ) . '</span></span>';
-        $html .= '<h1>' . get_the_date( 'F Y' ) . '</h1>';
+        $html .= '<span class="item-current item-month"><span class="bread-current bread-month">' . esc_html( get_the_date( 'F Y' ) ) . '</span></span>';
+        $html .= '<h1>' . esc_html( get_the_date( 'F Y' ) ) . '</h1>';
     } elseif ( is_year() ) {
-        $html .= '<span class="item-current item-year"><span class="bread-current bread-year">' . get_the_date( 'Y' ) . '</span></span>';
-        $html .= '<h1>' . get_the_date( 'Y' ) . '</h1>';
+        $html .= '<span class="item-current item-year"><span class="bread-current bread-year">' . esc_html( get_the_date( 'Y' ) ) . '</span></span>';
+        $html .= '<h1>' . esc_html( get_the_date( 'Y' ) ) . '</h1>';
     } elseif ( is_archive() ) {
         $custom_tax_name = get_queried_object()->name;
         $html .= '<span class="item-current item-archive"><span class="bread-current bread-archive">' . esc_html( $custom_tax_name ) . '</span></span>';

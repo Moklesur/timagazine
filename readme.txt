@@ -19,6 +19,7 @@ TiMagazine is a Responsive HTML5 and CSS3 WordPress Theme created with Bootstrap
 == Menus ===
 
 Primary
+Top Menu
 
 == Credits ==
 
@@ -58,48 +59,14 @@ Primary
 
 * Masonry v4.2.0  https://masonry.desandro.com MIT License by David DeSandro
 
+* jquery.fakecrop.js Copyright (c) 2012 Vuong Nguyen http://vuongnguyen.com
+* slick slider Copyright (c) 2017 Ken Wheeler, Licensed under the MIT license, Free as in Bacon. https://github.com/kenwheeler/slick/
+
 * Chosen https://github.com/harvesthq/chosen ,(C) Harvest, [MIT](http://opensource.org/licenses/MIT)s
 
 * Image (used in screenshot)
-https://pixabay.com/en/tea-the-drink-teacup-relaxation-428306/
-https://pixabay.com/en/mortar-crushed-hand-bowl-container-1170665/
-https://pixabay.com/en/studio-portrait-woman-face-model-660806/
-https://pixabay.com/en/working-typing-macbook-laptop-2618559/
-https://pixabay.com/en/utah-mountain-biking-bike-biking-95032/
-https://pixabay.com/en/lacrosse-air-force-ohio-state-game-165576/
-https://pixabay.com/en/kayaking-kayaker-kayak-water-sports-569282/
-
-Health
-https://pixabay.com/en/health-fruit-lemon-dried-sheet-540809/
-https://pixabay.com/en/tape-apple-glas-water-blue-diet-403590/
-https://pixabay.com/en/doctor-dentist-dental-clinic-1149149/
-https://pixabay.com/en/breakfast-first-meal-day-bran-2367097/
-https://pixabay.com/en/lifestyle-healthy-food-salad-2568455/
-https://pixabay.com/en/herbal-tea-drink-healthy-lifestyle-2562218/
-https://pixabay.com/en/notebook-book-the-work-office-work-2723406/
-https://pixabay.com/en/coffee-caffeine-core-seed-2535350/
-
-fashion
-https://pixabay.com/en/model-fashion-attractive-female-600225/
-https://pixabay.com/en/fashion-woman-beauty-leisure-model-1636868/
-https://pixabay.com/en/fashion-woman-beauty-leisure-model-1636872/
-https://pixabay.com/en/woman-portrait-face-model-canon-659352/
-https://pixabay.com/en/fashion-beauty-model-portrait-girl-1063100/
-https://pixabay.com/en/woman-blond-portrait-girl-color-1320810/
-https://pixabay.com/en/fun-cold-elegance-face-fashion-20008/
-https://pixabay.com/en/woman-hair-drying-girl-female-586185/
 https://pixabay.com/en/people-woman-girl-female-fashion-2594946/
-
-Sport
-https://pixabay.com/en/bobsled-team-run-olympics-ice-643397/
-https://pixabay.com/en/football-american-football-position-380388/
-https://pixabay.com/en/the-ball-stadion-football-the-pitch-488700/
-https://pixabay.com/en/baseball-player-shortstop-infield-1045263/
-
-technology
-https://pixabay.com/en/smartphone-white-silver-gray-1957740/
+https://pixabay.com/en/fashion-beauty-model-portrait-girl-1063100/
+https://pixabay.com/en/utah-mountain-biking-bike-biking-95032/
 https://pixabay.com/en/home-office-workstation-office-336373/
-https://pixabay.com/en/camera-woman-girl-people-capture-2590221/
-https://pixabay.com/en/people-hand-watch-time-technology-2577985/
-https://pixabay.com/en/adult-business-computer-connection-2178566/
-https://pixabay.com/en/business-woman-business-man-business-2071349/
+https://pixabay.com/en/doctor-dentist-dental-clinic-1149149/

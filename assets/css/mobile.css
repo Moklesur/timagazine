@@ -4,14 +4,34 @@
 ********************************************************/
 
 /********************************************************
-        ## Min Width 1200px
+        ## Min Width 1300px And Max Width 1499px
+********************************************************/
+@media (min-width: 1200px) and (max-width: 1499px) {
+    .featured-col-6 .featured-mag-thumb a{
+        height: 364px !important;
+    }
+    .entry-meta > span {
+        padding: 0 6px;
+    }
+    .entry-meta a{
+        font-size: 11px;
+    }
+}
+/********************************************************
+        ## Min Width 1200px And Max Width 1299px
 ********************************************************/
 @media (min-width: 1200px) and (max-width: 1299px) {
-    .featured-col-6{
-        width: 100%;
+    .entry-meta a{
+        font-size: 11px;
     }
-    .featured-col-3{
-        width: 50%;
+    .entry-meta > span {
+        padding: 0 6px;
+    }
+    .featured-col-6 .featured-mag-thumb a{
+        height: 337px !important;
+    }
+    .featured-mag-post-widget h4{
+        font-size: 18px;
     }
 }
 /********************************************************
@@ -24,18 +44,27 @@
     .featured-col-3{
         width: 50%;
     }
+    .featured-mag-post-widget h4{
+        font-size: 18px;
+    }
     .boxed .layout {
         width: 95%;
+    }
+    .featured-col-6 img,.featured-col-3 img{
+        width: 100%;
     }
 }
 /********************************************************
         ## Min Width 768px And Max Width 991px
 ********************************************************/
 @media (min-width: 768px) and (max-width: 991px){
+    .woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
+        width: 48%;
+    }
     .boxed .layout {
         width: 93%;
     }
-    .featured-col-6{
+    .featured-col-6,.featured-mag-post-widget img,.featured-col-6 img,.featured-col-3 img{
         width: 100%;
     }
     .featured-col-3{
@@ -76,13 +105,22 @@
         ## Max Width 767px
 ********************************************************/
 @media only screen and (max-width:767px) {
+    .woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
+        width: 48%;
+    }
+    .featured-mag-post-widget h4{
+        font-size: 18px;
+    }
     .ads-banner{
         margin-top: 15px;
     }
     .boxed .container-fluid {
         padding: 0 15px;
     }
-    .featured-col-3,.featured-col-6,.boxed .layout,.top-menu{
+    .featured-col-3{
+        width: 50%;
+    }
+    .featured-mag-post-widget img,.featured-col-6,.boxed .layout,.top-menu{
         width: 100%;
     }
     .hidden-xs{
@@ -139,5 +177,7 @@
         ## Max Width 480px
 ********************************************************/
 @media only screen and (max-width:480px) {
-
+    .featured-col-3,.featured-col-6,.woocommerce ul.products li.product, .woocommerce-page ul.products li.product{
+        width: 100%;
+    }
 }

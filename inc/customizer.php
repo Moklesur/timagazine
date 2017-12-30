@@ -33,12 +33,12 @@ function timagazine_customize_register( $wp_customize ) {
 	$wp_customize->add_setting('timagazine_options[divider]', array(
 			'type'              => 'divider_control',
 			'capability'        => 'edit_theme_options',
-			'sanitize_callback' => 'esc_attr',
+			'sanitize_callback' => esc_attr( 'divider' )
 		)
 	);
 	$wp_customize->add_panel( 'general_settings_panel', array(
 		'title' => __( 'General Settings', 'timagazine' ),
-		'priority' => 10
+		'priority' => 10,
 	) );
 
 	## Sections ##
@@ -262,12 +262,44 @@ function timagazine_customize_register( $wp_customize ) {
 		)
 	);
 
+	$wp_customize->add_setting(
+		'recent_post_hand_pick',
+		array(
+			'default'           => 'post',
+			'sanitize_callback' => 'timagazine_border_style_sanitize',
+		)
+	);
+	$wp_customize->add_control(
+		'recent_post_hand_pick',
+		array(
+			'type'        => 'select',
+			'label'       => __( 'Recent Post Or Hand Pick', 'timagazine' ),
+			'section'     => 'top_bar',
+			'choices' => array(
+				'post'     => __( 'Recent Post', 'timagazine' ),
+				'custom'     => __( 'Hand Pick', 'timagazine' )
+			),
+		)
+	);
+
+	$wp_customize->add_setting( 'recent_post_limit', array(
+		'default'           => '3',
+		'sanitize_callback' => 'absint',
+	) );
+	$wp_customize->add_control( 'recent_post_limit', array(
+		'label' => __( 'Recent Post Limit', 'timagazine' ),
+		'description' => __( 'Post limit 3 for free version', 'timagazine' ),
+		'type' => 'number',
+		'section' => 'top_bar'
+	) );
+
 	$wp_customize->add_setting( 'breaking_news_content_1', array(
 		'default'           => '',
 		'sanitize_callback' => 'timagazine_sanitize_text',
 	) );
 	$wp_customize->add_control( 'breaking_news_content_1', array(
 		'label' => __( 'Breaking News Content 1', 'timagazine' ),
+		'description' => __( 'Hand Pick Content 1', 'timagazine' ),
 		'type' => 'text',
 		'section' => 'top_bar'
 	) );
@@ -278,6 +310,7 @@ function timagazine_customize_register( $wp_customize ) {
 	) );
 	$wp_customize->add_control( 'breaking_news_content_2', array(
 		'label' => __( 'Breaking News Content 2', 'timagazine' ),
+		'description' => __( 'Hand Pick Content 2', 'timagazine' ),
 		'type' => 'text',
 		'section' => 'top_bar'
 	) );
@@ -288,6 +321,7 @@ function timagazine_customize_register( $wp_customize ) {
 	) );
 	$wp_customize->add_control( 'breaking_news_content_3', array(
 		'label' => __( 'Breaking News Content 3', 'timagazine' ),
+		'description' => __( 'Hand Pick Content 3', 'timagazine' ),
 		'type' => 'text',
 		'section' => 'top_bar'
 	) );
@@ -298,6 +332,7 @@ function timagazine_customize_register( $wp_customize ) {
 	) );
 	$wp_customize->add_control( 'breaking_news_content_4', array(
 		'label' => __( 'Breaking News Content 4', 'timagazine' ),
+		'description' => __( 'Hand Pick Content 4', 'timagazine' ),
 		'type' => 'text',
 		'section' => 'top_bar'
 	) );
@@ -806,6 +841,7 @@ function timagazine_customize_register( $wp_customize ) {
 		array(
 			'type'        => 'select',
 			'label'       => __( 'Footer Top Border style', 'timagazine' ),
+			'description' => __( 'Border shows at bottom', 'timagazine' ),
 			'section'     => 'footer_top',
 			'choices' => array(
 				'none'    => __( 'none', 'timagazine' ),
@@ -830,7 +866,7 @@ function timagazine_customize_register( $wp_customize ) {
 	) );
 
 	$wp_customize->add_setting( 'footer_top_top_padding', array(
-		'default'           => '',
+		'default'           => '30',
 		'sanitize_callback' => 'absint',
 	) );
 	$wp_customize->add_control( 'footer_top_top_padding', array(
@@ -1234,7 +1270,7 @@ function timagazine_customize_register( $wp_customize ) {
 
 		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'category_color_' . $category->term_id,
 			array(
-				'label'    => sprintf( __( ' %s', 'timagazine' ), $category->name ),
+				'label'    => esc_html( $category->name ),
 				'section'  => 'category_color_section',
 				'settings' => 'category_color_' . $category->term_id,
 			)
@@ -1436,8 +1472,8 @@ function timagazine_customize_register( $wp_customize ) {
 			'section'     => 'blog_layout_settings',
 			'choices' => array(
 				'default'    => __( 'Default ( Masonry Two Columns )', 'timagazine' ),
+				'blog-wide'     => __( 'Full Width ( One Column with sidebar)', 'timagazine' ),
 				'masonry'     => __( 'Masonry ( Three Columns No Sidebar)', 'timagazine' ),
-				'blog-wide'     => __( 'Full Width', 'timagazine' )
 			),
 		)
 	);
@@ -1537,8 +1573,84 @@ function timagazine_customize_register( $wp_customize ) {
 		'priority'       => 30
 	) );
 
+	/*--------------------------------------------------------------
+	# Archive
+	--------------------------------------------------------------*/
 
+	$wp_customize->add_panel( 'archive_panel', array(
+		'title' => __( 'Archive', 'timagazine' ),
+		'priority' => 90
+	) );
 
+	## Sections ##
+
+	$wp_customize->add_section( 'archive_layout_settings', array(
+		'title'          => __( 'Archive Layout', 'timagazine' ),
+		'panel' => 'archive_panel',
+		'priority'       => 10
+	) );
+
+	$wp_customize->add_section( 'archive_meta', array(
+		'title'          => __( 'Post Meta', 'timagazine' ),
+		'panel' => 'archive_panel',
+		'priority'       => 20
+	) );
+
+	$wp_customize->add_section( 'archive_featured_image', array(
+		'title'          => __( 'Featured Image', 'timagazine' ),
+		'panel' => 'archive_panel',
+		'priority'       => 40
+	) );
+
+	## Archive  Layout ##
+
+	$wp_customize->add_setting(
+		'archive_layout',
+		array(
+			'default'           => 'blog-wide',
+			'sanitize_callback' => 'timagazine_blog_layout_sanitize',
+		)
+	);
+	$wp_customize->add_control(
+		'archive_layout',
+		array(
+			'type'        => 'radio',
+			'label'       => __( 'Archive Layout', 'timagazine' ),
+			'priority'       => 10,
+			'section'     => 'archive_layout_settings',
+			'choices' => array(
+				'default'    => __( 'Default ( One Column With Sidebar )', 'timagazine' ),
+				'blog-wide'     => __( 'Two Columns ( sidebar )', 'timagazine' ),
+				'masonry'     => __( 'Masonry Three Columns ( No Sidebar *Pro Version* )', 'timagazine' ),
+			),
+		)
+	);
+
+	## Archive Meta ##
+
+	$wp_customize->add_setting( 'archive_meta_index_enable', array(
+		'default'           => '',
+		'sanitize_callback' => 'timagazine_sanitize_checkbox',
+	) );
+	$wp_customize->add_control( 'archive_meta_index_enable', array(
+		'label' => __( 'Show/Hide Archive Posts Meta', 'timagazine' ),
+		'type' => 'checkbox',
+		'section' => 'archive_meta',
+		'priority'       => 20
+	) );
+
+	## Featured Image ##
+
+	$wp_customize->add_setting( 'archive_featured_image_index_enable', array(
+		'default'           => '',
+		'sanitize_callback' => 'timagazine_sanitize_checkbox',
+	) );
+	$wp_customize->add_control( 'archive_featured_image_index_enable', array(
+		'label' => __( 'Show/Hide Archive Posts Featured Image', 'timagazine' ),
+		'type' => 'checkbox',
+		'section' => 'archive_featured_image',
+		'priority'       => 30
+	) );
 
 	if ( isset( $wp_customize->selective_refresh ) ) {
 		$wp_customize->selective_refresh->add_partial( 'blogname', array(
@@ -1552,6 +1664,99 @@ function timagazine_customize_register( $wp_customize ) {
 	}
 }
 add_action( 'customize_register', 'timagazine_customize_register' );
+/**
+ * Adding Go to Pro Section in Customizer
+ * https://github.com/justintadlock/trt-customizer-pro
+ */
+if( class_exists( 'WP_Customize_Section' ) ) :
+	/**
+	 * Adding Go to Pro Section in Customizer
+	 * https://github.com/justintadlock/trt-customizer-pro
+	 */
+	class timagazine_Customize_Section_Pro extends WP_Customize_Section {
+
+		/**
+		 * The type of customize section being rendered.
+		 *
+		 * @since  1.0.0
+		 * @access public
+		 * @var    string
+		 */
+		public $type = 'pro-section';
+
+		/**
+		 * Custom button text to output.
+		 *
+		 * @since  1.0.0
+		 * @access public
+		 * @var    string
+		 */
+		public $pro_text = '';
+
+		/**
+		 * Custom pro button URL.
+		 *
+		 * @since  1.0.0
+		 * @access public
+		 * @var    string
+		 */
+		public $pro_url = '';
+
+		/**
+		 * Add custom parameters to pass to the JS via JSON.
+		 *
+		 * @since  1.0.0
+		 * @access public
+		 * @return void
+		 */
+		public function json() {
+			$json = parent::json();
+
+			$json['pro_text'] = $this->pro_text;
+			$json['pro_url']  = esc_url( $this->pro_url );
+
+			return $json;
+		}
+
+		/**
+		 * Outputs the Underscore.js template.
+		 *
+		 * @since  1.0.0
+		 * @access public
+		 * @return void
+		 */
+		protected function render_template() { ?>
+			<li id="accordion-section-{{ data.id }}" class="accordion-section control-section control-section-{{ data.type }} cannot-expand get-pro-theme">
+				<h3 class="accordion-section-title">
+					{{ data.title }}
+					<# if ( data.pro_text && data.pro_url ) { #>
+						<a href="{{ data.pro_url }}" class="button button-secondary alignright" target="_blank">{{ data.pro_text }}</a>
+						<# } #>
+				</h3>
+			</li>
+		<?php }
+	}
+endif;
+
+add_action( 'customize_register', 'timagazine_magazine_sections_pro' );
+function timagazine_magazine_sections_pro( $wp_customize ) {
+	// Register custom section types.
+	$wp_customize->register_section_type( 'timagazine_Customize_Section_Pro' );
+
+	// Register sections.
+	$wp_customize->add_section(
+		new timagazine_Customize_Section_Pro(
+			$wp_customize,
+			'timagazine_magazine_get_pro',
+			array(
+				'title'    => esc_html__( 'Pro Available', 'timagazine' ),
+				'priority' => 5,
+				'pro_text' => esc_html__( 'Get Pro Theme', 'timagazine' ),
+				'pro_url'  => 'https://www.themetim.com/wordpress-themes/ti-magazine-pro/'
+			)
+		)
+	);
+}
 
 /**
  * Text
@@ -1589,7 +1794,9 @@ function timagazine_border_style_sanitize( $input ) {
 		'solid'     => __( 'solid', 'timagazine' ),
 		'double'     => __( 'double', 'timagazine' ),
 		'groove'     => __( 'groove', 'timagazine' ),
-		'ridge'     => __( 'ridge', 'timagazine' )
+		'ridge'     => __( 'ridge', 'timagazine' ),
+		'post'     => __( 'Recent Post', 'timagazine' ),
+		'custom'     => __( 'Hand Pick', 'timagazine' ),
 	);
 
 	if ( array_key_exists( $input, $valid ) ) {
@@ -1682,3 +1889,10 @@ function timagazine_customize_preview_js() {
 	wp_enqueue_script( 'timagazine-customizer', get_template_directory_uri() . '/assets/js/customizer.js', array( 'customize-preview' ), '20151215', true );
 }
 add_action( 'customize_preview_init', 'timagazine_customize_preview_js' );
+/**
+ * Enqueue Scripts for customize controls
+ */
+function timagazine_customize_scripts() {
+	wp_enqueue_script( 'timagazine-customize-controls-js', get_template_directory_uri().'/assets/js/customize-controls.js', array( 'jquery' ), '', true );
+}
+add_action( 'customize_controls_enqueue_scripts', 'timagazine_customize_scripts' );

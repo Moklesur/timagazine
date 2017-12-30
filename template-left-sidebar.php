@@ -13,7 +13,7 @@ if ( ! is_front_page() ){
 ?>
     <main class="ride-sidebar-page">
         <section>
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row">
                     <?php get_sidebar(); ?>
                     <div class="col-lg-9 col-md-9<?php echo $mt_50; ?>">
