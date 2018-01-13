@@ -33,7 +33,7 @@ function timagazine_customize_register( $wp_customize ) {
 	$wp_customize->add_setting('timagazine_options[divider]', array(
 			'type'              => 'divider_control',
 			'capability'        => 'edit_theme_options',
-			'sanitize_callback' => esc_attr( 'divider' )
+			'sanitize_callback' => 'timagazine_sanitize_text'
 		)
 	);
 	$wp_customize->add_panel( 'general_settings_panel', array(
@@ -514,8 +514,7 @@ function timagazine_customize_register( $wp_customize ) {
 			'label'       => __( 'Menu Layout', 'timagazine' ),
 			'section'     => 'menu_design',
 			'choices' => array(
-				'wide'    => __( 'default', 'timagazine' ),
-				'collapse'     => __( 'Collapsed ( Pro Version )', 'timagazine' )
+				'wide'    => __( 'default', 'timagazine' )
 			),
 		)
 	);
@@ -573,16 +572,6 @@ function timagazine_customize_register( $wp_customize ) {
 	$wp_customize->add_control( 'menu_font_weight', array(
 		'label' => __( 'Menu Item Font Weight', 'timagazine' ),
 		'type' => 'number',
-		'section' => 'menu_design'
-	) );
-
-	$wp_customize->add_setting( 'menu_indicator', array(
-		'default'           => '',
-		'sanitize_callback' => 'timagazine_sanitize_checkbox',
-	) );
-	$wp_customize->add_control( 'menu_indicator', array(
-		'label' => __( 'Show/Hide Dropdown Indicator ( Pro Version )', 'timagazine' ),
-		'type' => 'checkbox',
 		'section' => 'menu_design'
 	) );
 
