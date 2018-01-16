@@ -26,7 +26,7 @@ function timagazine_breadcrumbs( $args = array() ) {
     $html = '<div id="' . esc_attr( $args['breadcrumbs_id'] ) . '" class="' . esc_attr( $args['breadcrumbs_classes'] ) . '"><div class="container-fluid">';
 
     // Add Homepage link & separator (always present)
-    $html .= '<span class="item-home"><a class="bread-link bread-home" href="' . esc_url(get_home_url()) . '" title="' . esc_attr( $args['home_title'] ) . '">' .  esc_html($args['home_title']) . '</a></span>';
+    $html .= '<span class="item-home"><a class="bread-link bread-home" href="' . esc_url( get_home_url() ) . '" title="' . esc_attr( $args['home_title'] ) . '">' .  esc_html($args['home_title']) . '</a></span>';
     $html .= $separator;
 
     // Post

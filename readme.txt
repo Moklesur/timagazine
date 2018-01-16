@@ -1,9 +1,12 @@
 === timagazine ===
 
-Timagazine, Copyright 2017
-Timagazine is distributed under the terms of the GNU GPL
+Contributors: themetim
+Tags: blog, custom-background, custom-colors, custom-menu, translation-ready, theme-options, threaded-comments, custom-logo, footer-widgets, custom-header, featured-image-header, full-width-template, left-sidebar, right-sidebar
 
-License: GNU General Public License v2 or later
+Requires at least: 4.0
+Tested up to: 4.7
+Stable tag: 1.0.0
+License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
@@ -56,8 +59,6 @@ Top Menu
 * Popper
   Copyright (C) Federico Zivolo 2017
   Distributed under the MIT License (license terms are at http://opensource.org/licenses/MIT).
-
-* Masonry v4.2.0  https://masonry.desandro.com MIT License by David DeSandro
 
 * jquery.fakecrop.js Copyright (c) 2012 Vuong Nguyen http://vuongnguyen.com
 * slick slider Copyright (c) 2017 Ken Wheeler, Licensed under the MIT license, Free as in Bacon. https://github.com/kenwheeler/slick/

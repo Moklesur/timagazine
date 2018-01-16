@@ -23,7 +23,7 @@ function timagazine_customize_register( $wp_customize ) {
 		public $type = 'divider';
 		public $label = '';
 		public function render_content() { ?>
-			<h3 style="margin-top:15px; margin-bottom:0;padding:9px 5px; border:2px dashed #222627;text-transform:uppercase; text-align: center;letter-spacing: 2px;"><?php echo esc_html( $this->label ); ?></h3>
+			<hr/><hr/><hr/><h3><?php echo esc_html( $this->label ); ?></h3>
 			<?php
 		}
 	}
@@ -1521,22 +1521,6 @@ function timagazine_customize_register( $wp_customize ) {
 		'type' => 'checkbox',
 		'section' => 'blog_content_excerpt'
 	) );
-	$wp_customize->add_setting( 'excerpt_lenght', array(
-		'default'           => '45',
-		'sanitize_callback' => 'absint',
-	) );
-	$wp_customize->add_control( 'excerpt_lenght', array(
-		'type'        => 'number',
-		'section'     => 'blog_content_excerpt',
-		'settings' => 'excerpt_lenght',
-		'label'       => __('Excerpt length', 'timagazine'),
-		'description' => __('Default: 45 words', 'timagazine'),
-		'input_attrs' => array(
-			'min'   => 10,
-			'max'   => 200,
-			'step'  => 5,
-		),
-	) );
 
 	## Featured Image ##
 
@@ -1754,7 +1738,7 @@ function timagazine_magazine_sections_pro( $wp_customize ) {
  */
 
 function timagazine_sanitize_text( $input ) {
-	return wp_kses_post( force_balance_tags( $input ) );
+	return sanitize_text_field( $input );
 }
 
 /**

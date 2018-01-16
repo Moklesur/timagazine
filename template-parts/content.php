@@ -40,8 +40,11 @@ $margin[] = 'mb-30 hentry col-12';
 		</header><!-- .entry-header -->
 		<div class="entry-content mt-20">
 			<?php
-			$excerpt = get_theme_mod('excerpt_lenght', '45');
-			//return $excerpt;
+			if ( get_theme_mod( 'excerpt_content_enable' ) ){
+				the_content();
+			} else {
+				the_excerpt();
+			}
 			the_excerpt();
 			wp_link_pages(array(
 				'before' => '<div class="page-links">' . __('Pages : ', 'timagazine'),

@@ -93,19 +93,6 @@ class Timagazine_Widget_Featured_Posts extends WP_Widget {
                     </div>
                     <?php  $counter++;
                 endwhile; ?>
-                <script>
-                    var isMobile = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent);
-                    jQuery(document).ready(function() {
-                        if (jQuery(window).width() < 1199 || isMobile) {
-                        }else{
-                            jQuery('.featured-col-6 .featured-mag-thumb img').fakecrop({
-                                wrapperWidth : 700,
-                                wrapperHeight : 428,
-                                squareWidth : false
-                            });
-                        }
-                    });
-                </script>
             </div>
             <?php echo $args['after_widget'];
             wp_reset_postdata();
@@ -117,9 +104,9 @@ class Timagazine_Widget_Featured_Posts extends WP_Widget {
 
         $instance['posts_dropdown'] = array_map( 'sanitize_text_field', (array) $new_instance['posts_dropdown'] );
         $instance['number'] = (int) $new_instance['number'];
-        $instance[ 'enable_meta' ] = strip_tags( $new_instance[ 'enable_meta' ] );
-        $instance[ 'enable_category' ] = strip_tags( $new_instance[ 'enable_category' ] );
-        $instance[ 'enable_post_title' ] = strip_tags( $new_instance[ 'enable_post_title' ] );
+        $instance[ 'enable_meta' ] = absint( $new_instance[ 'enable_meta' ] );
+        $instance[ 'enable_category' ] = absint( $new_instance[ 'enable_category' ] );
+        $instance[ 'enable_post_title' ] = absint( $new_instance[ 'enable_post_title' ] );
 
         return $instance;
     }
@@ -137,7 +124,7 @@ class Timagazine_Widget_Featured_Posts extends WP_Widget {
             <div class="">
                 <h2>
                     <label for="<?php echo $this->get_field_id( 'posts_dropdown' ); ?>"><?php _e( 'Choose Your Posts', 'timagazine' ); ?></label>
-                    <select data-placeholder="<?php echo esc_attr__( 'Select five posts to display in this widget', 'timagazine' ); ?>" multiple="multiple" name="<?php echo $this->get_field_name( 'posts_dropdown' ); ?>" id="<?php echo $this->get_field_id( 'posts_dropdown' ); ?>" class="widefat chosen-dropdown-10 featured-posts-dropdown">
+                    <select data-placeholder="<?php esc_attr_e( 'Select five posts to display in this widget', 'timagazine' ); ?>" multiple="multiple" name="<?php echo $this->get_field_name( 'posts_dropdown' ); ?>" id="<?php echo $this->get_field_id( 'posts_dropdown' ); ?>" class="widefat chosen-dropdown-10 featured-posts-dropdown">
                         <?php
                         global $post;
                         $args = array( 'numberposts' => -1 );

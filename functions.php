@@ -156,7 +156,6 @@ function timagazine_widgets_init() {
 	register_widget( 'Timagazine_Widget_Social_Links' );
 	register_widget( 'Timagazine_Newsletter' );
 	register_widget( 'Timagazine_Widget_Author' );
-	register_widget( 'Timagazine_Widget_Ads' );
 	register_widget( 'Timagazine_Most_Popular' );
 }
 add_action( 'widgets_init', 'timagazine_widgets_init' );
@@ -194,7 +193,7 @@ function timagazine_scripts() {
 
 	wp_enqueue_script( 'timagazine-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array('jquery'), '20151215', true );
 
-	wp_enqueue_script( 'masonry', get_template_directory_uri() . '/assets/js/masonry.js', array('jquery'), '4.2.0', true );
+	wp_enqueue_script( 'masonry' );
 
 	wp_enqueue_script( 'timagazine-script', get_template_directory_uri() . '/assets/js/script.js', array('jquery'), '1.0.0', true );
 
@@ -214,7 +213,6 @@ require get_template_directory() . '/inc/widgets/widget-trending-posts.php';
 require get_template_directory() . '/inc/widgets/widget-social-links.php';
 require get_template_directory() . '/inc/widgets/widget-newsletter.php';
 require get_template_directory() . '/inc/widgets/widget-author.php';
-require get_template_directory() . '/inc/widgets/widget-ads.php';
 require get_template_directory() . '/inc/widgets/widget-most-popular.php';
 
 /**
@@ -267,15 +265,6 @@ function timagazine_woocommerce_support() {
 require get_template_directory() . '/inc/woocommerce.php';
 
 /**
- * the excerpt length
- */
-function timagazine_excerpt_length( $excerpt_length ) {
-	$excerpt = get_theme_mod('excerpt_lenght', '45');
-	return $excerpt;
-}
-add_filter( 'excerpt_length', 'timagazine_excerpt_length', 999 );
-
-/**
  * Load Site Origin Bundle
  */
 if ( class_exists( 'SiteOrigin_Widget' ) ) {
@@ -292,7 +281,7 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' )) {
 /**
  * Load TGM Plugin
  */
-require_once dirname( __FILE__ ) . '/inc/class-tgm-plugin-activation.php';
+require get_template_directory() . '/inc/class-tgm-plugin-activation.php';
 
 add_action( 'tgmpa_register', 'timagazine_active_plugins' );
 

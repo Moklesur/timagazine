@@ -101,18 +101,6 @@ class Timagazine_Widget_Trending_Posts extends WP_Widget {
                     ?>
                 </div>
             </div>
-            <script>
-                jQuery(document).ready(function() {
-                    jQuery('.trending-slick-carousel').slick({
-                        dots: false,
-                        arrows: true,
-                        vertical: true,
-                        slidesToShow: 4,
-                        slidesToScroll: 2,
-                        verticalSwiping: true
-                    });
-                });
-            </script>
         </div>
         <?php
         echo $args['after_widget'];
@@ -122,9 +110,9 @@ class Timagazine_Widget_Trending_Posts extends WP_Widget {
         $instance = $old_instance;
         $instance['title'] = sanitize_text_field( $new_instance['title'] );
         $instance['category_dropdown'] = array_map( 'sanitize_text_field', (array) $new_instance['category_dropdown'] );
-        $instance[ 'enable_meta' ] = strip_tags( $new_instance[ 'enable_meta' ] );
-        $instance[ 'enable_category' ] = strip_tags( $new_instance[ 'enable_category' ] );
-        $instance[ 'enable_post_title' ] = strip_tags( $new_instance[ 'enable_post_title' ] );
+        $instance[ 'enable_meta' ] = absint( $new_instance[ 'enable_meta' ] );
+        $instance[ 'enable_category' ] = absint( $new_instance[ 'enable_category' ] );
+        $instance[ 'enable_post_title' ] = absint( $new_instance[ 'enable_post_title' ] );
 
         return $instance;
     }

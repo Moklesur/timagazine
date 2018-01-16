@@ -33,8 +33,10 @@ class Timagazine_Widget_Author extends WP_Widget {
             <?php
 
             $author_link = '';
-            foreach( $author_dropdown as $key => $result ) {
-               $author_link = get_author_posts_url( $result, '' );
+            if ( is_array( $author_dropdown ) || is_object( $author_dropdown )) {
+                foreach ( $author_dropdown as $key => $result ) {
+                    $author_link = get_author_posts_url( $result, '' );
+                }
             }
 
             if ( $image_uri ) :
@@ -48,11 +50,11 @@ class Timagazine_Widget_Author extends WP_Widget {
                         <span class="author-role"><?php echo esc_html( $position ); ?></span>
                     </div>
                 <?php }
-                    if( $content != '' ) { ?>
-                <p class="author-text mb-30"><?php echo esc_html( $content ); ?></p>
+                if( $content != '' ) { ?>
+                    <p class="author-text mb-30"><?php echo esc_html( $content ); ?></p>
                 <?php }
-                    if( $author_link != '' ) { ?>
-                    <a href="<?php echo esc_url( $author_link ); ?>" class="text-uppercase"><?php _e( 'My Articles', 'timagazine' ); ?></a>
+                if( $author_link != '' ) { ?>
+                    <a href="<?php echo esc_url( $author_link ); ?>" class="text-uppercase"><?php esc_html_e( 'My Articles', 'timagazine' ); ?></a>
                 <?php } ?>
             </div>
         </div>
@@ -63,7 +65,7 @@ class Timagazine_Widget_Author extends WP_Widget {
         $instance['name'] = sanitize_text_field( $new_instance['name'] );
         $instance['position'] = sanitize_text_field( $new_instance['position'] );
         $instance['content'] = sanitize_text_field( $new_instance['content'] );
-        $instance['image_uri'] = strip_tags( $new_instance['image_uri'] );
+        $instance['image_uri'] = esc_url_raw( $new_instance['image_uri'] );
         $instance['author_dropdown'] = array_map( 'sanitize_text_field', (array) $new_instance['author_dropdown'] );
         return $instance;
     }
@@ -96,7 +98,7 @@ class Timagazine_Widget_Author extends WP_Widget {
                 </div>
                 <div class="col-3">
                     <h2>
-                        <label for="<?php echo $this->get_field_id( 'content' ); ?>" style="margin-bottom: -4px;"><?php _e( 'Author Link', 'timagazine' ); ?></label>
+                        <label class="timagazine-author-link-label" for="<?php echo $this->get_field_id( 'content' ); ?>"><?php _e( 'Author Link', 'timagazine' ); ?></label>
                         <select data-placeholder="<?php echo esc_attr__( 'Select an author', 'timagazine' ); ?>" multiple="multiple" name="<?php echo $this->get_field_name( 'author_dropdown' ); ?>" id="<?php echo $this->get_field_id( 'author_dropdown' ); ?>" class="widefat  author-dropdown">
                             <?php $args = array(
                                 'blog_id'      => $GLOBALS['blog_id'],
@@ -136,41 +138,11 @@ class Timagazine_Widget_Author extends WP_Widget {
                     <h2>
                         <label for="<?php echo $this->get_field_id('image_uri'); ?>"><?php _e( 'Author Image', 'timagazine' ); ?></label>
                         <?php if ( $image_uri ) : ?>
-                            <img class="custom_media_image" src="<?php echo $image_uri; ?>" style="margin:0;padding:0;max-width:100px;float:left;display:inline-block" /><br />
+                            <img class="custom_media_image timagazine-custom_media_image" src="<?php echo $image_uri; ?>" /><br />
                         <?php endif; ?>
-                        <input type="text" class="widefat custom_media_url" name="<?php echo $this->get_field_name('image_uri'); ?>" id="<?php echo $this->get_field_id('image_uri'); ?>" value="<?php echo $image_uri; ?>" style="margin-top:5px;">
-
-                        <input type="button" class="button button-primary custom_media_button" id="custom_media_button" value="Upload Image" style="margin-top:5px;" />
+                        <input type="text" class="widefat custom_media_url" name="<?php echo $this->get_field_name('image_uri'); ?>" id="<?php echo $this->get_field_id('image_uri'); ?>" value="<?php echo $image_uri; ?>">
+                        <input type="button" class="button button-primary custom_media_button timagazine_author_image_btn" id="custom_media_button" value="<?php _e( 'Upload Image', 'timagazine' ) ?>" />
                     </h2>
-                    <script>
-                        jQuery(document).ready( function($) {
-                            function media_upload(button_class) {
-                                var _custom_media = true,
-                                    _orig_send_attachment = wp.media.editor.send.attachment;
-
-                                $('body').on('click', button_class, function(e) {
-                                    var button_id ='#'+$(this).attr('id');
-                                    var self = $(button_id);
-                                    var send_attachment_bkp = wp.media.editor.send.attachment;
-                                    var button = $(button_id);
-                                    var id = button.attr('id').replace('_button', '');
-                                    _custom_media = true;
-                                    wp.media.editor.send.attachment = function(props, attachment){
-                                        if ( _custom_media  ) {
-                                            $('.custom_media_id').val(attachment.id);
-                                            $('.custom_media_url').val(attachment.url);
-                                            $('.custom_media_image').attr('src',attachment.url).css('display','block');
-                                        } else {
-                                            return _orig_send_attachment.apply( button_id, [props, attachment] );
-                                        }
-                                    }
-                                    wp.media.editor.open(button);
-                                    return false;
-                                });
-                            }
-                            media_upload('.custom_media_button.button');
-                        });
-                    </script>
                 </div>
             </div>
         </div>

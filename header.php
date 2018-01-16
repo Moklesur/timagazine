@@ -20,11 +20,11 @@
 		<?php wp_head(); ?>
 	</head>
 <body <?php body_class(); ?>>
-<a href="#" id="back-to-top" title="Back to top">&uarr;</a>
+	<a href="#" id="back-to-top" title="<?php esc_attr_e( 'Back to top', 'timagazine' ); ?>">&uarr;</a>
 <div  class="layout">
 	<header id="masthead" class="site-header">
 		<?php if( get_theme_mod( 'enable_top_bar' ) ) :
-			do_action( 'top_header' );
+			do_action( 'timagazine_top_header' );
 		endif; ?>
 		<section class="header-2">
 			<div class="container-fluid">
@@ -34,9 +34,9 @@
 							<?php
 							the_custom_logo();
 							if ( is_front_page() && is_home() ) : ?>
-								<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+								<h1 class="site-title"><a href="<?php echo esc_url( get_home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 							<?php else : ?>
-								<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+								<h1 class="site-title"><a href="<?php echo esc_url( get_home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 								<?php
 							endif;
 
@@ -63,7 +63,7 @@
 			<nav class="navbar navbar-expand-lg pl-0 pr-0">
 				<div class="container-fluid">
 					<div class="mobile-bar text-right">
-						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="<?php esc_attr_e( 'Toggle navigation', 'timagazine' ); ?>">
 							<i class="fa fa-bars" aria-hidden="true"></i>
 						</button>
 					</div>
@@ -78,17 +78,11 @@
 							'walker'			=> new WP_Bootstrap_Navwalker()
 						)
 					);
+
+					if ( get_theme_mod( 'search_enable' ) ) :
+						get_search_form();
+					endif;
 					?>
-					<?php if ( get_theme_mod( 'search_enable' ) ) : ?>
-						<div class="dropdown show search-dropdown">
-							<a class="" href="#" role="button" id="header-search-id" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-search"></i></a>
-							<form method="get" class="dropdown-menu"  aria-labelledby="header-search-id" action="<?php echo esc_url( home_url( '/' )); ?>">
-								<input type="search" class="search-field form-control"
-									   placeholder="<?php esc_attr_e( 'Search ...', 'timagazine' ); ?>"
-									   value="<?php echo get_search_query() ?>" name="s" />
-							</form>
-						</div>
-					<?php endif; ?>
 				</div>
 			</nav>
 		</section><!-- .header-3 -->

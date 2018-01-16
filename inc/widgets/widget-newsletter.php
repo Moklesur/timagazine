@@ -46,18 +46,18 @@ class Timagazine_Newsletter extends WP_Widget {
                 <?php } ?>
 
                 <input type="email" class="form-control mt-4 <?php echo esc_attr( $alignment ); ?>" name="EMAIL" id="newsletter-email" placeholder="info@youremail.com" required="">
-                <button type="submit" class="btn btn-block mt-2"><?php _e( 'Submit', 'timagazine' ); ?></button>
+                <button type="submit" class="btn btn-block mt-2"><?php esc_html_e( 'Submit', 'timagazine' ); ?></button>
             </form>
         </div>
         <?php echo $args['after_widget'];
     }
     public function update( $new_instance, $old_instance ) {
         $instance = $old_instance;
-        $instance['url'] = sanitize_text_field( $new_instance['url'] );
+        $instance['url'] = esc_url_raw( $new_instance['url'] );
         $instance['title'] = sanitize_text_field( $new_instance['title'] );
         $instance['paragraph'] = sanitize_text_field( $new_instance['paragraph'] );
-        $instance['alignment'] = $new_instance['alignment'];
-        $instance['icon'] = $new_instance['icon'];
+        $instance['alignment'] = sanitize_text_field( $new_instance['alignment'] );
+        $instance['icon'] = sanitize_text_field( $new_instance['icon'] );
         return $instance;
     }
     public function form( $instance ) {

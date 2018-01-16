@@ -84,8 +84,7 @@ $theme_widgets = array(
     'widget-social-links',
     'widget-newsletter',
     'widget-most-popular',
-    'widget-author',
-    'widget-ads'
+    'widget-author'
 );
 
 $template_dir = get_template_directory();

@@ -21,9 +21,9 @@ function timagazine_hide_page_title() {
 /**
  * Change number or products per row to 3
  */
-add_filter('loop_shop_columns', 'loop_columns');
-if (!function_exists('loop_columns')) {
-    function loop_columns() {
+add_filter('loop_shop_columns', 'timagazine_loop_columns');
+if (!function_exists('timagazine_loop_columns')) {
+    function timagazine_loop_columns() {
         return 3; // 3 products per row
     }
 }
@@ -77,7 +77,7 @@ function timagazine_header_add_to_cart_fragment( $fragments ) {
     global $woocommerce;
     ob_start();
     ?>
-    <a class="cart-contents" href="<?php echo $woocommerce->cart->get_cart_url(); ?>"><i class="fa fa-shopping-basket"></i><span><?php echo sprintf(_n(' %d', ' %d', $woocommerce->cart->cart_contents_count, 'timagazine'), $woocommerce->cart->cart_contents_count ); ?></span></a>
+    <a class="cart-contents" href="<?php echo esc_url( $woocommerce->cart->get_cart_url() ); ?>"><i class="fa fa-shopping-basket"></i><span><?php echo sprintf(_n(' %d', ' %d', $woocommerce->cart->cart_contents_count, 'timagazine'), $woocommerce->cart->cart_contents_count ); ?></span></a>
     <?php
     $fragments['a.cart-contents'] = ob_get_clean();
     return $fragments;

@@ -80,11 +80,7 @@
 							endif;
 							?>
 						</div>
-
-						<?php
-
-					} else { ?>
-
+						<?php } else { ?>
 						<div class="col-lg-6 col-md-6 col-sm-6 col-12 footer-top-padding">
 							<?php
 							if ( is_active_sidebar( 'footer-widget' ) ) :
@@ -92,7 +88,6 @@
 							endif;
 							?>
 						</div>
-
 						<div class="col-lg-6 col-md-6 col-sm-6 col-12 footer-top-padding">
 							<?php
 							if ( is_active_sidebar( 'footer-widget-2' ) ) :
@@ -100,9 +95,7 @@
 							endif;
 							?>
 						</div>
-
 					<?php } ?>
-
 				</div>
 			</div>
 		</section><!-- .footer-top -->
@@ -135,7 +128,9 @@
 			<div class="row">
 				<div class="col-6 d-flex align-self-center">
 					<div class="site-info">
-						<a href="<?php echo esc_url( __( 'https://www.themetim.com/', 'timagazine' ) ); ?>"><?php echo esc_html( get_theme_mod( 'copyright', 'TiMagazine By ThemeTim' ) ); ?></a>
+						<a href="<?php echo esc_url( __( 'https://www.themetim.com/', 'timagazine' ) ); ?>">
+							<?php echo esc_html( get_theme_mod( 'copyright', 'TiMagazine By ThemeTim' ) ); ?>
+						</a>
 					</div><!-- .site-info -->
 				</div>
 				<?php if ( is_active_sidebar( 'footer-bottom' ) ) : ?>

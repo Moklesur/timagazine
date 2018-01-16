@@ -80,7 +80,7 @@ class Timagazine_Most_Popular extends WP_Widget {
 	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 		$instance['title'] = sanitize_text_field( $new_instance['title'] );
-		$instance['number'] = (int) $new_instance['number'];
+		$instance['number'] = absint( $new_instance['number'] );
 
 		return $instance;
 	}

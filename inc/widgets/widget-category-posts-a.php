@@ -44,7 +44,7 @@ class Timagazine_Widget_Category_Posts_A extends WP_Widget {
             <div class="widgets-heading overflow-h">
                 <h3 class="widget-title float-left"><?php echo esc_html( get_cat_name( $category ) ); ?></h3>
                 <?php if ( $enable_view_all_cat != 1 ) : ?>
-                <a class="float-right mt-2 text-uppercase widget-cat-link" href="<?php echo esc_url( get_category_link( $category ) ); ?>"><?php _e( 'View All', 'timagazine' );?></a>
+                <a class="float-right mt-2 text-uppercase widget-cat-link" href="<?php echo esc_url( get_category_link( $category ) ); ?>"><?php esc_html_e( 'View All', 'timagazine' );?></a>
                 <?php endif; ?>
             </div>
             <div class="widget-category-posts-a row">
@@ -140,13 +140,13 @@ class Timagazine_Widget_Category_Posts_A extends WP_Widget {
     }
     public function update( $new_instance, $old_instance ) {
         $instance = $old_instance;
-        $instance['category_layout_style'] = strip_tags( $new_instance['category_layout_style'] );
+        $instance['category_layout_style'] = sanitize_text_field( $new_instance['category_layout_style'] );
         $instance['category_dropdown'] = sanitize_text_field( $new_instance['category_dropdown'] );
-        $instance['number'] = (int) $new_instance['number'];
-        $instance[ 'enable_meta' ] = strip_tags( $new_instance[ 'enable_meta' ] );
-        $instance[ 'enable_category' ] = strip_tags( $new_instance[ 'enable_category' ] );
-        $instance[ 'enable_post_title' ] = strip_tags( $new_instance[ 'enable_post_title' ] );
-        $instance[ 'enable_view_all_cat' ] = strip_tags( $new_instance[ 'enable_view_all_cat' ] );
+        $instance['number'] = absint( $new_instance['number'] );
+        $instance[ 'enable_meta' ] = absint( $new_instance[ 'enable_meta' ] );
+        $instance[ 'enable_category' ] = absint( $new_instance[ 'enable_category' ] );
+        $instance[ 'enable_post_title' ] = absint( $new_instance[ 'enable_post_title' ] );
+        $instance[ 'enable_view_all_cat' ] = absint( $new_instance[ 'enable_view_all_cat' ] );
         return $instance;
     }
     public function form( $instance ) {

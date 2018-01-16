@@ -39,23 +39,62 @@
                 }, 700);
             });
         }
-    });
-    //Trending
-    $('.trending-carousel .vertical .carousel-item').each(function(){
-        var next = $(this).next();
-        if (!next.length) {
-            next = $(this).siblings(':first');
+        //widget featured post
+        if ( ('.featured-mag-post-widget').length ){
+            $( '.featured-col-6 .featured-mag-thumb img' ).each( function() {
+                var isMobile = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent);
+                if (jQuery(window).width() < 1199 || isMobile) {
+                } else {
+                    if (jQuery('.boxed').length) {
+                        jQuery('.featured-col-6 .featured-mag-thumb img').fakecrop({
+                            wrapperWidth : 700,
+                            wrapperHeight : 428,
+                            squareWidth : false
+                        });
+                    }else{
+                        jQuery('.featured-col-6 .featured-mag-thumb img').fakecrop({
+                            wrapperWidth : 700,
+                            wrapperHeight : 460,
+                            squareWidth : false
+                        });
+                    }
+                }
+            } );
         }
-        $('.trending-carousel').find('.carousel-item').first().addClass('active');
-        next.children(':first-child').clone().appendTo($(this));
-
-        for (var i=1;i<3;i++) {
-            next=next.next();
-            if (!next.length) {
-                next = $(this).siblings(':first');
-            }
-
-            next.children(':first-child').clone().appendTo($(this));
+        //widget latest posts
+        if ( ( '.latest-posts-carousel' ).length ){
+            $( '.latest-posts-carousel' ).each( function() {
+                $('.latest-posts-carousel').owlCarousel({
+                    margin: 30,
+                    nav: true,
+                    autoplay: true,
+                    loop: true,
+                    responsive:{
+                        0:{
+                            items:1
+                        },
+                        600:{
+                            items:2
+                        },
+                        1000:{
+                            items:3
+                        }
+                    }
+                });
+            });
+        }
+        //widget trending posts
+        if ( ( '.trending-slick-carousel' ).length ){
+            $( '.trending-slick-carousel' ).each( function() {
+                jQuery('.trending-slick-carousel').slick({
+                    dots: false,
+                    arrows: true,
+                    vertical: true,
+                    slidesToShow: 4,
+                    slidesToScroll: 2,
+                    verticalSwiping: true
+                });
+            })
         }
     });
 })( jQuery );

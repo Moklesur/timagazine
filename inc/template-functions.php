@@ -157,7 +157,7 @@ function timagazine_top_header_action() { ?>
 					<div class="row d-flex justify-content-end">
 						<?php if( get_theme_mod( 'enable_top_bar_date' ) ) : ?>
 							<div class="col-auto hidden-xs">
-								<p class="mb-0 current-date"><?php echo date(get_option('date_format')); ?></p>
+								<p class="mb-0 current-date"><?php echo date( get_option( 'date_format' ) ); ?></p>
 							</div>
 						<?php endif;
 						if( get_theme_mod( 'enable_top_bar_menu' ) ) : ?>
@@ -175,4 +175,4 @@ function timagazine_top_header_action() { ?>
 		</div>
 	</section><!-- .header-1 -->
 <?php }
-add_action( 'top_header', 'timagazine_top_header_action' );
+add_action( 'timagazine_top_header', 'timagazine_top_header_action' );

@@ -98,47 +98,20 @@ class Timagazine_Widget_latest_Posts extends WP_Widget {
             </div>
             <?php echo $args['after_widget'];
             wp_reset_postdata();
-            ?>
-            <script>
-                //Latest Post Carousel
-                ( function( $ ) {
-                    $(document).ready(function() {
-                        $('.latest-posts-carousel').owlCarousel({
-                            margin: <?php echo $margin; ?>,
-                            nav: <?php echo $enable_nav; ?>,
-                            autoplay: <?php echo $enable_autoplay; ?>,
-                            loop: <?php echo $enable_loop; ?>,
-                            responsive:{
-                                0:{
-                                    items:1
-                                },
-                                600:{
-                                    items:2
-                                },
-                                1000:{
-                                    items:<?php echo $items; ?>
-                                }
-                            }
-                        });
-
-                    });
-                })( jQuery );
-            </script>
-        <?php endif;
+            endif;
     }
 
     public function update( $new_instance, $old_instance ) {
         $instance = $old_instance;
         $instance['title'] = sanitize_text_field( $new_instance['title'] );
-        $instance['number'] = (int) $new_instance['number'];
-        $instance['items'] = (int) $new_instance['items'];
-        $instance['margin'] = (int) $new_instance['margin'];
-        $instance[ 'enable_meta' ] = strip_tags( $new_instance[ 'enable_meta' ] );
-        $instance[ 'enable_category' ] = strip_tags( $new_instance[ 'enable_category' ] );
-        $instance[ 'enable_post_title' ] = strip_tags( $new_instance[ 'enable_post_title' ] );
-        $instance[ 'enable_nav' ] = strip_tags( $new_instance[ 'enable_nav' ] );
-        $instance[ 'enable_autoplay' ] = strip_tags( $new_instance[ 'enable_autoplay' ] );
-        $instance[ 'enable_loop' ] = strip_tags( $new_instance[ 'enable_loop' ] );
+        $instance['number'] = absint ($new_instance['number'] );
+        $instance['items'] = absint( $new_instance['items'] );
+        $instance['margin'] = absint( $new_instance['margin'] );
+        $instance[ 'enable_meta' ] = absint( $new_instance[ 'enable_meta' ] );
+        $instance[ 'enable_category' ] = absint( $new_instance[ 'enable_category' ] );
+        $instance[ 'enable_nav' ] = absint( $new_instance[ 'enable_nav' ] );
+        $instance[ 'enable_autoplay' ] = absint( $new_instance[ 'enable_autoplay' ] );
+        $instance[ 'enable_loop' ] = absint( $new_instance[ 'enable_loop' ] );
 
         return $instance;
     }
@@ -198,7 +171,7 @@ class Timagazine_Widget_latest_Posts extends WP_Widget {
                         </div>
                     </div>
                 </div>
-                <h3 class="title panel-title"><?php _e( 'Slider Settings', 'timagazine' ); ?></h3>
+                <h3 class="title panel-title"><?php _e( 'Slider Settings ( Pro )', 'timagazine' ); ?></h3>
                 <div class="accordion-contents content">
                     <div class="accordion-wrap">
                         <div class="col-3">
