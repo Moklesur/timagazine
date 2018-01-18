@@ -34,9 +34,9 @@
 							<?php
 							the_custom_logo();
 							if ( is_front_page() && is_home() ) : ?>
-								<h1 class="site-title"><a href="<?php echo esc_url( get_home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+								<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 							<?php else : ?>
-								<h1 class="site-title"><a href="<?php echo esc_url( get_home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+								<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 								<?php
 							endif;
 
@@ -82,7 +82,17 @@
 					if ( get_theme_mod( 'search_enable' ) ) :
 						get_search_form();
 					endif;
-					?>
+
+					if ( class_exists( 'WooCommerce' ) ) : ?>
+						<div class="mini-cart-fix">
+							<a class="cart-contents" href="<?php echo wc_get_cart_url(); ?>" >
+								<i class="fa fa-shopping-basket"></i>
+							<span>
+								<?php echo sprintf ( _n( ' %d', ' %d', WC()->cart->get_cart_contents_count(), 'timagazine' ), WC()->cart->get_cart_contents_count() ); ?>
+							</span>
+							</a>
+						</div>
+					<?php endif; ?>
 				</div>
 			</nav>
 		</section><!-- .header-3 -->

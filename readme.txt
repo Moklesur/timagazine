@@ -1,13 +1,18 @@
 === timagazine ===
 
 Contributors: themetim
-Tags: blog, custom-background, custom-colors, custom-menu, translation-ready, theme-options, threaded-comments, custom-logo, footer-widgets, custom-header, featured-image-header, full-width-template, left-sidebar, right-sidebar
-
 Requires at least: 4.0
 Tested up to: 4.7
 Stable tag: 1.0.0
-License: GPLv3
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: blog, custom-background, custom-colors, custom-menu, translation-ready, theme-options, threaded-comments, custom-logo, footer-widgets, custom-header, featured-image-header, full-width-template, left-sidebar, right-sidebar
+
+== License ==
+
+Unless otherwise specified, all the theme files, scripts and images are licensed under GNU General Public License Version 3.
+License: GNU General Public License v3 or later
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
+timagazine WordPress Theme, Copyright 2018 themetim
+timagazine is distributed under the terms of the GNU GPL
 
 == Description ==
 

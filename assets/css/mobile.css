@@ -150,10 +150,16 @@
     .mobile-bar{
         width: 100%;
     }
-    .search-dropdown{
+    .search-dropdown,.mini-cart-fix{
         position: absolute;
-        top: 10px;
+        top: 17px;
         font-size: 17px;
+    }
+    .mini-cart-fix{
+        margin-left: 45px;
+    }
+    .main-menu .navbar {
+        padding: .85rem 1rem;
     }
     .search-dropdown .dropdown-menu{
         left: 0;

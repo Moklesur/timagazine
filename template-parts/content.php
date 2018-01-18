@@ -45,7 +45,6 @@ $margin[] = 'mb-30 hentry col-12';
 			} else {
 				the_excerpt();
 			}
-			the_excerpt();
 			wp_link_pages(array(
 				'before' => '<div class="page-links">' . __('Pages : ', 'timagazine'),
 				'after' => '</div>',

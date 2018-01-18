@@ -57,19 +57,6 @@ function timagazine_related_products_args( $args ) {
 }
 
 /**
- * Update mini-cart when products are added to the cart via AJAX
- */
-add_filter( 'woocommerce_add_to_cart_fragments', function( $fragments ) {
-    ob_start();
-    ?>
-    <div class="mini-cart">
-        <?php woocommerce_mini_cart(); ?>
-    </div>
-    <?php $fragments['div.mini-cart'] = ob_get_clean();
-    return $fragments;
-} );
-
-/**
  * Update contents count via AJAX
  */
 add_filter('woocommerce_add_to_cart_fragments', 'timagazine_header_add_to_cart_fragment');

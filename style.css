@@ -4,7 +4,7 @@ Theme URI: https://www.themetim.com/wordpress-themes/ti-magazine/
 Author: themetim
 Author URI: https://www.themetim.com/
 Description: TiMagazine is a Responsive HTML5 and CSS3 WordPress Theme created with Bootstrap 4 and ideal for news websites. Comes with the most popular siteorigine page builder. Fully customizable category posts with page builder widget. Drag and Drop categorized news sections within page. Unlimited color and typography choices. Customizable background, header, footer and sidebar section
-Version: 1.0.4
+Version: 1.0.6
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: timagazine
@@ -174,6 +174,24 @@ th, td {
 	padding: 25px 0;
 }
 /* header 3*/
+.mini-cart-fix{
+	float: right;
+	margin-left: 15px;
+	position: relative;
+}
+.mini-cart-fix span{
+	position: absolute;
+	top: -9px;
+	width: 22px;
+	height: 22px;
+	text-align: center;
+	line-height: 22px;
+	border-radius: 50%;
+	font-size: 11px;
+	right: -16px;
+	color: #fff;
+	background: #000;
+}
 .main-menu .dropdown-arrow-down:hover>.dropdown-menu {
 	display: block;
 }
@@ -1077,46 +1095,38 @@ object {
 .gallery {
 	margin-bottom: 1.5em;
 }
-
 .gallery-item {
 	display: inline-block;
 	text-align: center;
-	vertical-align: top;
+	vertical-align: inherit;
 	width: 100%;
+	margin: 0;
+	border: 0;
 }
-
 .gallery-columns-2 .gallery-item {
 	max-width: 50%;
 }
-
 .gallery-columns-3 .gallery-item {
 	max-width: 33.33%;
 }
-
 .gallery-columns-4 .gallery-item {
 	max-width: 25%;
 }
-
 .gallery-columns-5 .gallery-item {
 	max-width: 20%;
 }
-
 .gallery-columns-6 .gallery-item {
 	max-width: 16.66%;
 }
-
 .gallery-columns-7 .gallery-item {
 	max-width: 14.28%;
 }
-
 .gallery-columns-8 .gallery-item {
 	max-width: 12.5%;
 }
-
 .gallery-columns-9 .gallery-item {
 	max-width: 11.11%;
 }
-
 .gallery-caption {
 	display: block;
 }
