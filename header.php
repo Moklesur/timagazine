@@ -79,9 +79,14 @@
 						)
 					);
 
-					if ( get_theme_mod( 'search_enable' ) ) :
-						get_search_form();
-					endif;
+					if ( get_theme_mod( 'search_enable' ) ) : ?>
+						<div class="dropdown show search-dropdown">
+							<a class="" href="#" role="button" id="header-search-id" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-search"></i></a>
+							<div class="dropdown-menu">
+								<?php get_search_form(); ?>
+							</div>
+						</div>
+					<?php endif;
 
 					if ( class_exists( 'WooCommerce' ) ) : ?>
 						<div class="mini-cart-fix">
