@@ -305,16 +305,22 @@ function timagazine_active_plugins() {
 	);
 	tgmpa( $plugins );
 }
-
 /**
  * Scripts and styles for the Page Builder plugin
  */
 function timagazine_load_pagebuilder_scripts() {
-	wp_enqueue_script( 'timagazine-chosen', get_template_directory_uri() . '/inc/widgets/admin/js/chosen.jquery.min.js', array('jquery', 'jquery-ui-sortable'), '1.6.2', true );
-	wp_enqueue_script( 'timagazine-chosen-init', get_template_directory_uri() . '/inc/widgets/admin/js/chosen-init.js', array( 'jquery' ), '1.0.0', true );
 
-	wp_enqueue_style( 'timagazine-chosen-styles', get_template_directory_uri() . '/inc/widgets/admin/css/chosen.min.css', '1.6.2', false );
+	global  $pagenow;
 
-	wp_enqueue_style( 'timagazine-widgets-style', get_template_directory_uri() . '/inc/widgets/admin/css/widgets-style.css', '1.0.0', false );
+	if( $pagenow == 'post.php' || $pagenow == 'post-new.php' || $pagenow == 'widgets.php' || $pagenow == 'customize.php' ){
+		wp_enqueue_script( 'timagazine-chosen', get_template_directory_uri() . '/inc/widgets/admin/js/chosen.jquery.min.js', array('jquery', 'jquery-ui-sortable'), '1.6.2', true );
+		wp_enqueue_script( 'timagazine-chosen-init', get_template_directory_uri() . '/inc/widgets/admin/js/chosen-init.js', array( 'jquery' ), '1.0.0', true );
+
+		wp_enqueue_style( 'timagazine-chosen-styles', get_template_directory_uri() . '/inc/widgets/admin/css/chosen.min.css', '1.6.2', false );
+
+		wp_enqueue_style( 'timagazine-widgets-style', get_template_directory_uri() . '/inc/widgets/admin/css/widgets-style.css', '1.0.0', false );
+
+	}
+
 }
 add_action( 'admin_enqueue_scripts', 'timagazine_load_pagebuilder_scripts' );

@@ -95,5 +95,8 @@ foreach ( $theme_widgets as $widget ) {
 // add admin scripts
 add_action('admin_enqueue_scripts', 'timagazine_media_admin');
 function timagazine_media_admin() {
-    wp_enqueue_media();
+    global  $pagenow;
+    if( $pagenow == 'post.php' || $pagenow == 'post-new.php' || $pagenow == 'widgets.php' || $pagenow == 'customize.php' ){
+        wp_enqueue_media();
+    }
 }
