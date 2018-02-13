@@ -126,7 +126,7 @@
 	<section class="footer-bottom">
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-6 d-flex align-self-center">
+				<div class="col-12 col-lg-6 d-flex align-self-center">
 					<div class="site-info">
 						<a href="<?php echo esc_url( __( 'https://www.themetim.com/', 'timagazine' ) ); ?>">
 							<?php echo esc_html( get_theme_mod( 'copyright', 'TiMagazine By ThemeTim' ) ); ?>
@@ -134,7 +134,7 @@
 					</div><!-- .site-info -->
 				</div>
 				<?php if ( is_active_sidebar( 'footer-bottom' ) ) : ?>
-					<div class="col-6 d-flex justify-content-end">
+					<div class="col-12 col-lg-6 d-flex justify-content-end">
 					<?php dynamic_sidebar( 'footer-bottom' ); ?>
 				</div>
 				<?php endif; ?>
