@@ -531,7 +531,7 @@ function timagazine_customize_register( $wp_customize ) {
 			$wp_customize,
 			'main_menu_bg',
 			array(
-				'label'         => __('Menu Menu Background Color', 'timagazine'),
+				'label'         => __('Menu Background Color', 'timagazine'),
 				'section'       => 'menu_design'
 			)
 		)

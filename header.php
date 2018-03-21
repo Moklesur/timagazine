@@ -63,7 +63,7 @@
 			<nav class="navbar navbar-expand-lg pl-0 pr-0">
 				<div class="container-fluid">
 					<div class="mobile-bar text-right">
-						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="<?php esc_attr_e( 'Toggle navigation', 'timagazine' ); ?>">
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#timagazine-navbar-collapse" aria-controls="timagazine-navbar-collapse" aria-expanded="false" aria-label="<?php esc_attr_e( 'Toggle navigation', 'timagazine' ); ?>">
 							<i class="fa fa-bars" aria-hidden="true"></i>
 						</button>
 					</div>
@@ -72,7 +72,7 @@
 							'theme_location'    => 'menu-1',
 							'container'			=> 'div',
 							'container_class'	=> 'collapse navbar-collapse text-uppercase',
-							'container_id'		=> 'bs-example-navbar-collapse-1',
+							'container_id'		=> 'timagazine-navbar-collapse',
 							'menu_class'		=> 'navbar-nav',
 							'fallback_cb'		=> 'WP_Bootstrap_Navwalker::fallback',
 							'walker'			=> new WP_Bootstrap_Navwalker()
