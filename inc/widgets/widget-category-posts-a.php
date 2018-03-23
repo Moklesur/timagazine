@@ -58,7 +58,6 @@ class Timagazine_Widget_Category_Posts_A extends WP_Widget {
                        $title_tag = 'h5';
                        $d_bock = 'd-block';
                     if( $category_layout_style == 'category_layout_2' ){
-
                         $col = 'col-xl-12 col-lg-12 col-md-12 col-12 overflow-h';
                         $col2 = 'col-xl-12 col-lg-12 col-md-12 col-12 mt-30';
                         $col3 = 'col-xl-12 col-lg-12 col-md-12 col-12 mt-30';
@@ -70,11 +69,11 @@ class Timagazine_Widget_Category_Posts_A extends WP_Widget {
                         $d_bock = 'd-block';
                     }
                     } else {
+                        $excerpt = '<p class="mt-20">'.get_the_excerpt().'</p>';
                         if( $category_layout_style == 'category_layout_1' ){
                            $col = 'col-xl-6 col-lg-12 col-md-12 col-12 overflow-h';
                            $col2 = 'col-xl-5 col-lg-12 col-md-12 col-12 mt-30';
                            $col3 = 'col-xl-7 col-lg-12 col-md-12 col-12 mt-30';
-                           $excerpt = '';
                            $title_tag = 'h6';
                            $d_bock = 'd-none';
                         }
@@ -82,7 +81,6 @@ class Timagazine_Widget_Category_Posts_A extends WP_Widget {
                            $col = 'col-xl-12 col-lg-12 col-md-12 col-12 overflow-h';
                            $col2 = 'col-xl-6 col-lg-12 col-md-12 col-12 mt-30';
                            $col3 = 'col-xl-6 col-lg-12 col-md-12 col-12 mt-30';
-                           $excerpt = '<p class="mt-20">'.get_the_excerpt().'</p>';
                            $d_bock = '';
                         }
                     }
