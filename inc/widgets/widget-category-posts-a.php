@@ -76,6 +76,7 @@ class Timagazine_Widget_Category_Posts_A extends WP_Widget {
                            $col3 = 'col-xl-7 col-lg-12 col-md-12 col-12 mt-30';
                            $title_tag = 'h6';
                            $d_bock = 'd-none';
+                            $excerpt = '';
                         }
                         elseif( $category_layout_style == 'category_layout_2' ){
                            $col = 'col-xl-12 col-lg-12 col-md-12 col-12 overflow-h';
