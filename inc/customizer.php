@@ -86,7 +86,7 @@ function timagazine_customize_register( $wp_customize ) {
 	## Divider ##
 
 	$wp_customize->add_control( new timagazine_divider( $wp_customize, 'header_logo', array(
-			'label' => __('Logo', 'timagazine'),
+			'label' => __('', 'timagazine'),
 			'section' => 'title_tagline',
 			'settings' => 'timagazine_options[divider]',
 			'priority'      => 5
