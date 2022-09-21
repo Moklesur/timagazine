@@ -3,7 +3,7 @@
 Contributors: themetim
 Requires at least: 4.5
 Tested up to: 5.4.2
-Stable tag: 1.0.0
+Stable tag: 2.0
 Tags: blog, custom-background, custom-colors, custom-menu, translation-ready, theme-options, threaded-comments, custom-logo, footer-widgets, custom-header, featured-image-header, full-width-template, left-sidebar, right-sidebar
 
 == License ==
